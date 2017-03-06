@@ -17,6 +17,10 @@ Yocto 还算一个蛮新的东西，可能很多人都不太熟悉。我最近�
 
 	bitbake linux-rockchip -c compile -f
 
+如果修改的是configure，改为下面的命令  
+
+	bitbake linux-rockchip -c menuconfig
+
 上面这步只是编译而已，下面还需要烧写内核的话，分两种场景。
 ### 烧写完整镜像
 
@@ -36,7 +40,7 @@ Yocto 还算一个蛮新的东西，可能很多人都不太熟悉。我最近�
 
 # 开发应用
 
-暂无
+目前修改应用我和修改kernel差不多用法，但是 yocto 的 document 里还介绍了一些工具，如 devtool，Quilt，等待研究。
 
 # 离线工作
 
@@ -56,20 +60,13 @@ Yocto 还算一个蛮新的东西，可能很多人都不太熟悉。我最近�
 ### 场景二：
 一个东西到了产品化阶段，我们想固定下所有的代码。
 
-这个通过设置本地的 mirror 来完成，具体参考网络的资料。
+这个可以通过设置本地的 mirror 来完成，具体参考下面的网络资料。
 
 
 [“How do I create my own source download mirror”](https://wiki.yoctoproject.org/wiki/How_do_I  )
 
 注意这个场景也不能使用 SRCREV = "${AUTOREV}”，需要有固定的代码位置。根据网络的资料，可以通过 buildhistory-collect-srcrevs 来帮助获取当前的rev，但我也没用过，有兴趣的可以在自己 google 下。
 
-
-
-# 更新代码
-
-不是清楚，暂时用下面的办法更新代码
-
-	bitbake linux-rockchip -c clean && bitbake linux-rockchip
 
 # Debug
 
@@ -80,9 +77,51 @@ Yocto 还算一个蛮新的东西，可能很多人都不太熟悉。我最近�
 
 一般我都会把上面这两句加到 local.conf 里，这样的 image 就非常方便使用，可以用 sshfs 拷贝文件，可以有 gdb 去debug 应用。
 具体这些的含义，请点击下面的链接：
-[“Image Features”](http://www.yoctoproject.org/docs/1.8/ref-manual/ref-manual.html#ref-features-image)
+[“Image Features”](http://www.yoctoproject.org/docs/2.3/ref-manual/ref-manual.html#ref-features-image)
 
 
-# 元包开发
+# Others
 
 Yocto 的开发，他的文档已经很全了，不需要多写什么，下面就提炼一点小tips，节约获取信息的时间。
+
+### 指定任务
+bitbake 可以指定只运行一个任务，比如
+
+	bitbake linux -c compile
+
+他就只会执行compile命令。这里要注意如果不加 -f 的话，命令有检查完 stamp 之后就直接 skip了。  
+常见的一些操作有，fetch， unpack， configure， compile， install， deploy等等，对应的是更新download，更新workdir下的source，配置参数，编译，安装，打包这些步骤。
+
+### 覆盖文件
+覆盖文件有两种，一种是通过 bappend 来修改提供这个文件的包，这种修改比较适合 bsp 包，有普遍性的修改。第二种就是通过  update-alternatives 来设定不同包的优先级，优先级最高的文件会覆盖进去。
+
+### 打印变量
+
+Yocto 里有很多什么 IMAGE_FEATURES 啊 DISTRO_FEATURES 啊， 因为很多层文件都有修改这些变量，所以有时候会不确定这些变量具体的值。
+之前找的资料显示可以用 bitbake -e， 但是这个不是很好用。  
+其实可以在 do_install 加一句 echo， 输出这个变量，bitbake 加 -v 就可以看到echo的内容了，比 -e 要容易看懂一点。
+
+
+### 更新代码
+
+不是清楚，暂时用下面的办法更新代码
+
+	bitbake linux-rockchip -c clean && bitbake linux-rockchip
+
+### 查看镜像里安装的包
+
+Yocto 有一套乱七八糟的包依赖管理，所以到后面我们会不确定自己的镜像上到底装了些什么东西，这个时候就需要一些命令去把信息打印出来。
+
+	 bitbake -g cvr-image
+
+执行完这个命令就可以得到3个文件，分别记录了各个级别的依赖和版本关系。
+
+### 集成服务器
+
+Yotco 有一个构建服务器叫 toaster， 等待研究。
+
+### 参考资料
+
+[“Bitbake”](http://www.yoctoproject.org/docs/2.3/bitbake-user-manual/bitbake-user-manual.html )  
+[“Dev”](http://www.yoctoproject.org/docs/2.3/dev-manual/dev-manual.html )  
+[“Ref”](http://www.yoctoproject.org/docs/2.3/ref-manual/ref-manual.html  )  
