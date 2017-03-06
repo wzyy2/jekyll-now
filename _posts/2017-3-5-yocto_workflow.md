@@ -120,7 +120,7 @@ Yocto 有一套乱七八糟的包依赖管理，所以到后面我们会不确�
 
 Yotco 有一个构建服务器叫 toaster， 等待研究。
 
-### 参考资料
+# 参考资料
 
 [“Bitbake”](http://www.yoctoproject.org/docs/2.3/bitbake-user-manual/bitbake-user-manual.html )  
 [“Dev”](http://www.yoctoproject.org/docs/2.3/dev-manual/dev-manual.html )  
