@@ -38,8 +38,24 @@ Distribution 就是我们日常在 Linux Host 上使用的哪些系统， 都应
 
 Buildroot is a simple, efficient and easy-to-use tool to generate embedded Linux systems through cross-compilation
 
-待更
+使用 Buildroot 的 project 最出名的就是 Openwrt了。可以看到，他制作出来的镜像可以跑在搭载16 Mb spi nor的路由器上，系统基本没包含多余的东西。
+这就得益于 Buildroot 的原则， simple。
+
+整个 Buildroot project在一个git维护。
+https://git.busybox.net/buildroot/
+
+使用kconfig和make，一个配置代表一种bsp支持
+https://git.busybox.net/buildroot/tree/configs/beaglebone_defconfig
+
+Buildroot本身不具备扩展能力，用户需要自己通过脚本来完成工作。
+
+这些列出来的特点，都是和 Yocto 不同的地方，下面我们会对比。
 
 # Yocto
 
-待更
+Yocto 和 Buildroot 一样， 是一套构建嵌入式系统的工具，但是他们两个的风格完全不同。
+
+Yocto project 是通过一个个单独的包（meta）来维护，比如有的包负责核心，有的负责外围。有的包是为了你跑 Rockchip 的芯片，有的包是让你安装上 QT, 有的包是则是让你跑起一个 debian，
+这个特点是我最喜欢的地方，同样采用类似机制的 nodejs，社区膨胀非常厉害，活跃度很高，每个人都分享自己低质量垃圾包到 github 上。。。。这样的机制保证了我们可以从互联网复用别人的工作成果，还是很好用的。
+
+Yocto 有一个非常灵活的构建系统，可以允许你使用 shell 和 python，可以处理各种特殊情况。
