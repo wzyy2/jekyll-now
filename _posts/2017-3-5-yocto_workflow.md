@@ -101,6 +101,9 @@ Yocto 里有很多什么 IMAGE_FEATURES 啊 DISTRO_FEATURES 啊， 因为很多�
 之前找的资料显示可以用 bitbake -e， 但是这个不是很好用。  
 其实可以在 do_install 加一句 echo， 输出这个变量，bitbake 加 -v 就可以看到echo的内容了，比 -e 要容易看懂一点。
 
+### clean
+
+执行 clean 会把 workdir 里的东西都删掉，执行 cleanstate 会多一个 shared cache，执行 cleanall 还会把download删掉。
 
 ### 更新代码
 
@@ -115,6 +118,7 @@ Yocto 有一套乱七八糟的包依赖管理，所以到后面我们会不确�
 	 bitbake -g cvr-image
 
 执行完这个命令就可以得到3个文件，分别记录了各个级别的依赖和版本关系。
+
 
 ### 集成服务器
 
