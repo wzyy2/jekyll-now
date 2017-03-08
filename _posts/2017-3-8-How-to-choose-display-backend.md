@@ -99,3 +99,20 @@ libmali有很多编译选项，我猜的话，除了软件硬件版本，还有�
 
 还有就是display server的选项，比如xserver，比如wayland。
 这个就是支持在display server下运行，没什么好说的。
+
+#drm
+
+drm的api分legacy api和新一点的atomic api，
+
+legacy api：  
+
+drmModeSetCrtc， drmModeSetPlane， drmModePageFlip都是legacy的api，这些函数什么意思，怎么用，可以搜索下网络资料。
+大致上，drmModeSetCrtc包括了drmModeSetPlane包括了drmModePageFlip。  
+在rk平台上，drmModeSetCrtc和drmModeSetPlane都是atomic的，意味着你调用这些api后会一直block到vblank， drmModePageFlip是noneblock的，你调用后就会返回。一般来说不在一个程序里顺序调用会block的api，性能不会有太多影响。
+
+
+atomic api：  
+legacy的api都是atomic的，而且容易重复调用，这就导致有些场景会很没效率。  
+比如wayland overlay的场景下，有3个plane，每个frame都要更新这个plane，如果全用drmModeSetPlane的话，就意味着要等待3次vblank，如果是60hz的屏幕，意味你的fps最高只会有20fps。  
+为了解决这种情况，我们就需要有一个api，能在一次调用里，解决掉所有的事情，比如更新所有的plane，然后只用等一次vblank。   
+drmModeAtomicCommit，具体用法请谷歌。
