@@ -76,7 +76,7 @@ Spec上的视频播放极限，比如rk3399,rk3288播放4k，rk3036播放1080p�
 但想让display部分去处理的话，软件上必须有对应的支持-------然而desktop based的gui framework大多缺失了这样一个东西。
 
 之前在rk的系统上，我base X11做了一个[“gstreamer sink”](https://github.com/rockchip-linux/gstreamer-rockchip/tree/master/gst/rksink/rkximage)。通过x的api获取窗口的位置，然后直接drm的api，绕过X系统，overlay画在窗口的位置。这样做确实可以发挥视频播放的极限，主要的问题就是没办法和gui系统融合，没办法叠加控件，如果使用的场景都是fullscreen，可以试试这做。  
-上文提了下wayland框架支持overlay，所以最理想的，还是wayland通过overlay的机制直接call的display单元显示，像android那样。但wayland毕竟还是在一个初步开发和推广的阶段，不管上游的community，还是下游的原厂，library，都没看到有完善的overlay视频方案。  
+上文提了下wayland框架支持overlay，所以最理想的，还是wayland通过overlay的机制直接call的display单元显示，像android那样。但wayland毕竟还是在一个初步开发和推广的阶段，不管上游的community，还是下游的原厂，方案商，都没看到有完善的overlay视频方案。  
 
 
 在linux的图形系统上加入display处理的逻辑还有很多工作要做，所以如果视频性能不是那么高，又需要复杂UI，就可以用gpu的框架。
@@ -84,7 +84,7 @@ x11走gles，在rk平台的软件上，测试下来，性能比较差，也许�
 qt eglfs是不错的选择。放视频的话，按rk3288的性能，可以达到1080p 60fps。  
 
 
-# tips
+# Tips
 
 ## libmali
 libmali是mali gpu的userspace library，我也看不到代码，完全是黑盒，只能说根据一些类似的代码和文档猜测他的实现方式。
