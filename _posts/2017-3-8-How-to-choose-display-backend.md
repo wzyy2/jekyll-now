@@ -54,7 +54,7 @@ QT EGLFS和dri2的方式也差不多，区别就在于，qt eglfs的font buffer�
 wayland是Linux上下一代的display server，从结构上来讲，也最相近android上的[“hwc”](http://dragon.leanote.com/post/Android%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F-II-%E6%9E%B6%E6%9E%84)，全部的compoiste都是gpu来做的，不会有xserver那样cpu合成的场景。    
 wayland除了gpu合成以外，另一个优势，就是overlay接口的存在，能允许移动平台上的一些2d加速模块，display模块在这个接口上被调用（这些模块才是移动平台能跑大分辨率ui的关键）。
 
-我觉得，wayland会在移动平台上更快成为主流。
+wayland一定会在mobile平台占有很重要的地位，但是要走的路还很长。
 
 
 #### links
