@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Yocto workflow
+title: Yocto workflow（长期更新）
 category: [Yocto, CN]
 ---
 
@@ -103,7 +103,7 @@ Yocto 里有很多什么 IMAGE_FEATURES 啊 DISTRO_FEATURES 啊， 因为很多�
 
 ### clean
 
-执行 clean 会把 workdir 里的东西都删掉，执行 cleanstate 会多一个 shared cache，执行 cleanall 还会把download删掉。
+执行 clean 会把 workdir 里的东西都删掉，执行 cleanstate 会多一个 shared cache，执行 cleanall 还会把 download 删掉。
 
 ### 更新代码
 
