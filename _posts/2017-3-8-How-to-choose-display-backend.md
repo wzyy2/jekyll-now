@@ -18,7 +18,7 @@ Linux的图形显示选择太多，Xserver, Wayland，raw的drm，fbdev，细化
 所以当你决定要在Linux要开发应用的时候，一定要明确你的需求,对比方案间的优劣。
 
 小框图：
-![](graphics.png)
+![](https://github.com/wzyy2/wzyy2.github.io/raw/master/images/graphics.png)
 
 # X11
 
