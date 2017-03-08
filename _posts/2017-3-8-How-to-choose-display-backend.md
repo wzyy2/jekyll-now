@@ -79,7 +79,7 @@ Spec上的视频播放极限，比如rk3399,rk3288播放4k，rk3036播放1080p�
 上文提了下wayland框架支持overlay，所以最理想的，还是wayland通过overlay的机制直接call的display单元显示，像android那样。但wayland毕竟还是在一个初步开发和推广的阶段，不管上游的community，还是下游的原厂，方案商，都没看到有完善的overlay视频方案。  
 
 
-在linux的图形系统上加入display处理的逻辑还有很多工作要做，所以如果视频性能不是那么高，又需要复杂UI，就可以用gpu的框架。
+总之在linux的图形系统上加入display处理的逻辑还有很多工作要做，所以如果视频性能不是那么高，又需要复杂UI，还是建议用gpu的框架。
 x11走gles，在rk平台的软件上，测试下来，性能比较差，也许有很多compoiste发生，也许有多余的vsync调用。  
 qt eglfs是不错的选择。放视频的话，按rk3288的性能，可以达到1080p 60fps。  
 
