@@ -28,10 +28,12 @@ X11的基础构架，建议先谷歌一下，太庞大，历史遗留比较多�
 大概理解，dri2自己管理一个window下面的buffers， xserver都不会过问，只有swap front buffer的时候，才会调一些函数来wait page flip来进行画面的同步。不过这个front buffer是false的，要注意，最后显示还要进行compoiste。理论上（理论上哦，实际我测出来还是一样慢。。），dri2全屏和不全屏的性能差距会比较大，因为全屏的情况下，dri2出来的flase front buffer，也就是这个window的drawbuffer， 是直接被作为全局的font buffer，送到ddx显示的，省去了compoiste。  
 所以在x11下开发3d应用的时候，一定要全屏，保证没有多余的compoiste。     
 
-
 另外一提，rk平台上的xserver，还支持了glamor，意味一些compoiste可以被gpu加速到，如果是做多窗口的应用或者desktop类型的产品，这个featrue还是非常有用的，能运行x11上的所有软件，又有gpu加速合成。   
 
 Xserver在移动平台除了一些软件兼容性的问题可以用用，长久来看，是一定要被淘汰的。
+
+##### 3.10
+做了些实验，x11下egl的lag，在拉高cpu频率之后，显著的缓解，所以应该就是cpu参与了合成步骤，导致效率变低。
 
 
 #### links
@@ -100,7 +102,7 @@ libmali有很多编译选项，我猜的话，除了软件硬件版本，还有�
 还有就是display server的选项，比如xserver，比如wayland。
 这个就是支持在display server下运行，没什么好说的。
 
-# libdrm
+## libdrm
 
 drm的api分legacy api和新一点的atomic api，
 
@@ -108,11 +110,11 @@ legacy api：
 
 drmModeSetCrtc， drmModeSetPlane， drmModePageFlip都是legacy的api，这些函数什么意思，怎么用，可以搜索下网络资料。
 大致上，drmModeSetCrtc包括了drmModeSetPlane包括了drmModePageFlip。  
-在rk平台上，drmModeSetCrtc和drmModeSetPlane都是atomic的，意味着你调用这些api后会一直block到vblank， drmModePageFlip是noneblock的，你调用后就会返回。一般来说不在一个程序里顺序调用会block的api，性能不会有太多影响。
+在rk平台上，drmModeSetCrtc和drmModeSetPlane都是atomic的，意味着你调用这些api后会一直block到vblank，drmModePageFlip是noneblock的，你调用后就会返回。一般来说不在一个程序里顺序调用会block的api，性能不会有太大问题。
 
 
 atomic api：  
 legacy的api都是atomic的，而且容易重复调用，这就导致有些场景会很没效率。  
-比如wayland overlay的场景下，有3个plane，每个frame都要更新这个plane，如果全用drmModeSetPlane的话，就意味着要等待3次vblank，如果是60hz的屏幕，意味你的fps最高只会有20fps。  
+比如wayland overlay的场景下，有3个plane，每个frame都要更新这几个plane，如果全用drmModeSetPlane的话，就意味着要等待3次vblank，如果是60hz的屏幕，那你的fps最高只会有20fps。  
 为了解决这种情况，我们就需要有一个api，能在一次调用里，解决掉所有的事情，比如更新所有的plane，然后只用等一次vblank。   
 drmModeAtomicCommit，具体用法请谷歌。
