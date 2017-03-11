@@ -9,11 +9,7 @@ category: [Linux, CN]
 # Overview
 
 对于Android开发者来说，基本不用关心图形方案这些细节，你只要调用java的class，最后的性能都是有原厂和谷歌验证过的。
-但对Linux开发者来说，情况要复杂的多，因为没有一个完美方案。这主要是下面两个原因。
-* 可选项太多  
-Linux的图形显示选择太多，Xserver, Wayland，raw的drm，fbdev，细化到Xserver，wayland的每个版本，GUI库的编译选项，这些不同的选择会导致很大的效果差异
-* 原厂没有太大的支持投入  
-一个芯片可能有更好的图形解决方案，但是原厂没有去支持，你也很有可能在理论更好的方案上得到一个更差的性能。之所以有这个问题，其实和第一个原因也有很大关系。
+但对Linux开发者来说，情况要复杂的多，没有一个完美方案。。
 
 所以当你决定要在Linux要开发应用的时候，一定要明确你的需求,对比方案间的优劣。
 
@@ -32,7 +28,7 @@ X11的基础构架，建议先谷歌一下，太庞大，历史遗留比较多�
 
 Xserver在移动平台除了一些软件兼容性的问题可以用用，长久来看，是一定要被淘汰的。
 
-##### 3.10
+#### 2017.3.10
 做了些实验，x11下egl的lag，在拉高cpu频率之后，显著的缓解，所以应该就是cpu参与了合成步骤，导致效率变低。
 
 
@@ -42,25 +38,37 @@ Xserver在移动平台除了一些软件兼容性的问题可以用用，长久�
 <https://dri.freedesktop.org/wiki/DDX/>   
 <https://www.freedesktop.org/wiki/Software/Glamor/>
 
-
 # QT EGLFS
 QT EGLFS是qt自己实现的一个gui系统，不支持多窗口，但也因此少了window compoiste。   
 QT EGLFS和dri2的方式也差不多，区别就在于，qt eglfs的font buffer在自己用gpu compoiste后，是直接送给drm去显示，而X里是送Window manager去做compoiste，所以EGLFS在效率上是有优势的。
 
+另外除了QT，常用的UI库里，SDL也是支持这种DRM+GL的方式的。
+
+#### 2017.3.11
+
+QT EGLFS的流程其实可以通过代码追踪一下。
+根据代码，一个qmlvideo的显示过程会是这样的(非qml的话不一样，会优先用xvimagesink的subwindow)，surface路径会是QDeclarativeVideoOutput->QDeclarativeVideoRendererBackend,显示一帧frame的话，会先调用到
+[QDeclarativeVideoRendererBackend::updatePaintNode](http://doc.qt.io/qt-5/qquickitem.html#updatePaintNode)，然后就是返回一个NV12 to RGB的shader，走正常qtquick程序的显示[显示](http://doc.qt.io/qt-5/qtquick-visualcanvas-scenegraph.html#scene-graph-and-rendering）
+，最后[QOpenGLCompositor](https://github.com/qt/qtbase/blob/6bceb4a8a9292ce9f062a38d6fe143460b54370e/src/platformsupport/platformcompositor/qopenglcompositor.cpp)会合成所有的window。   
+Qt EGLFS的流程还是很清晰的，都是GPU来合成，但是我没看到有对一个全屏window的情况做特殊处理，也就是不管几个window，至少走一次合成。所以3d的app如果不需要ui的话，还是直接用drm api吧，少一次合成。
+
+类推的话，Wayland应该也是类似的，可能再多一层窗口的GPU合成（不知道全屏会不会少掉这一层，没实验）。当然Wayland还有其他的特殊情况，比如overlay的窗口直接走DRM合成。
+
+至于X11,太复杂了，dri，ddx，几乎没办法确定整个显示的流程。我猜测的话，qteglfs是只经过了一次GPU拷贝，一次GPU合成，但x11下就是一次GPU合成，一次GPU拷贝，然后一次CPU合成（实验上看，这次合成少不掉），所以X11下会更慢。
 
 #### links
 <http://doc.qt.io/qt-5/embedded-linux.html>
 
 # Wayland
 
-wayland是Linux上下一代的display server，从结构上来讲，也最相近android上的[“hwc”](http://dragon.leanote.com/post/Android%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F-II-%E6%9E%B6%E6%9E%84)，全部的compoiste都是gpu来做的，不会有xserver那样cpu合成的场景。    
+wayland是Linux上下一代的display server，从结构上来讲，也最相近android上的[HWC](http://dragon.leanote.com/post/Android%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F-II-%E6%9E%B6%E6%9E%84)，全部的compoiste都是gpu来做的，不会有xserver那样cpu合成的场景。    
 wayland除了gpu合成以外，另一个优势，就是overlay接口的存在，能允许移动平台上的一些2d加速模块，display模块在这个接口上被调用（这些模块才是移动平台能跑大分辨率ui的关键）。
 
 wayland一定会在mobile平台占有很重要的地位，但是要走的路还很长。
 
 
 #### links
- <https://en.wikipedia.org/wiki/Wayland_>
+ <https://en.wikipedia.org/wiki/Wayland>
 
 # 应用场景
 
@@ -78,13 +86,12 @@ Spec上的视频播放极限，比如rk3399,rk3288播放4k，rk3036播放1080p�
 但想让display部分去处理的话，软件上必须有对应的支持-------然而desktop based的gui framework大多缺失了这样一个东西。
 
 之前在rk的系统上，我base X11做了一个[“gstreamer sink”](https://github.com/rockchip-linux/gstreamer-rockchip/tree/master/gst/rksink/rkximage)。通过x的api获取窗口的位置，然后直接drm的api，绕过X系统，overlay画在窗口的位置。这样做确实可以发挥视频播放的极限，主要的问题就是没办法和gui系统融合，没办法叠加控件，如果使用的场景都是fullscreen，可以试试这做。  
-上文提了下wayland框架支持overlay，所以最理想的，还是wayland通过overlay的机制直接call的display单元显示，像android那样。但wayland毕竟还是在一个初步开发和推广的阶段，不管上游的community，还是下游的原厂，方案商，都没看到有完善的overlay视频方案。  
+上文提了下wayland框架支持overlay，所以最理想的，还是wayland通过overlay的机制直接call的display单元显示，像android那样。
 
-
-总之在linux的图形系统上加入display处理的逻辑还有很多工作要做，所以如果视频性能不是那么高，又需要复杂UI，还是建议用gpu的框架。
-x11走gles，在rk平台的软件上，测试下来，性能比较差，也许有很多compoiste发生，也许有多余的vsync调用。  
-qt eglfs是不错的选择。放视频的话，按rk3288的性能，可以达到1080p 60fps。  
-
+总结一下，所以如果视频性能不是那么高，又需要复杂UI，建议用gpu的框架。   
+qt eglfs，放视频，按rk3288的性能，可以达到1080p 60fps。  
+x11，gles在rk平台的软件上，测试下来，性能比较差;不过已经有rkximagesink的overlay显示方案。  
+wayland暂时没有研究，理论上原生支持overlay的wayland是最好的，但是我觉得应该也就类似rkximageisnk的那种效果，不能和正常的窗口兼容。
 
 # Tips
 
@@ -104,7 +111,7 @@ libmali有很多编译选项，我猜的话，除了软件硬件版本，还有�
 
 ## libdrm
 
-drm的api分legacy api和新一点的atomic api，
+drm的api分legacy api和新一点的atomic api，如果你直接用drm api开发程序，一定要注意这两个api的区别。
 
 legacy api：  
 
@@ -115,6 +122,6 @@ drmModeSetCrtc， drmModeSetPlane， drmModePageFlip都是legacy的api，这些�
 
 atomic api：  
 legacy的api都是atomic的，而且容易重复调用，这就导致有些场景会很没效率。  
-比如wayland overlay的场景下，有3个plane，每个frame都要更新这几个plane，如果全用drmModeSetPlane的话，就意味着要等待3次vblank，如果是60hz的屏幕，那你的fps最高只会有20fps。  
+比如wayland drm的场景下，有3个plane，每个周期内要更新这几个plane，如果全用drmModeSetPlane的话，就意味着要等待3次vblank，那么一个60hz的屏幕，你的fps最高只会有20fps。  
 为了解决这种情况，我们就需要有一个api，能在一次调用里，解决掉所有的事情，比如更新所有的plane，然后只用等一次vblank。   
 drmModeAtomicCommit，具体用法请谷歌。

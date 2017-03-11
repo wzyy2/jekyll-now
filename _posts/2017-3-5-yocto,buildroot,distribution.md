@@ -18,7 +18,7 @@ Linux 除这些消费电子上体验的改进，他现在越来越垄断的服�
 * Yocto
 * Buildroot
 
-看到这三个选项，其实就可以看出来我是推销 Yocto 的了。这三个不是对等的概念，但可以是三个不同的 choose。从概念上讲， Yocto 包括了 distribution 和 Buildroot。 Buildroot 是构建工具，distribution 是系统， Yocto 则是包括了构建工具和系统的一个 project。
+看到这三个选项，其实就可以看出来我是推销 Yocto 的了。这三个不是对等的概念，但可以是三个不同的 choise。从概念上讲， Yocto 包括了 distribution 和 Buildroot。 Buildroot 是构建工具，distribution 是系统， Yocto 则是包括了构建工具和系统的一个 project。
 
 
 # Distribution
