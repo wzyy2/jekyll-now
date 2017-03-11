@@ -49,12 +49,12 @@ QT EGLFS和dri2的方式也差不多，区别就在于，qt eglfs的font buffer�
 QT EGLFS的流程其实可以通过代码追踪一下。
 根据代码，一个qmlvideo的显示过程会是这样的(非qml的话不一样，会优先用xvimagesink的subwindow)，surface路径会是QDeclarativeVideoOutput->QDeclarativeVideoRendererBackend,显示一帧frame的话，会先调用到
 [QDeclarativeVideoRendererBackend::updatePaintNode](http://doc.qt.io/qt-5/qquickitem.html#updatePaintNode)，然后就是返回一个NV12 to RGB的shader，走正常qtquick程序的显示[显示](http://doc.qt.io/qt-5/qtquick-visualcanvas-scenegraph.html#scene-graph-and-rendering）
-，最后[QOpenGLCompositor](https://github.com/qt/qtbase/blob/6bceb4a8a9292ce9f062a38d6fe143460b54370e/src/platformsupport/platformcompositor/qopenglcompositor.cpp)会合成所有的window。   
-Qt EGLFS的流程还是很清晰的，都是GPU来合成，但是我没看到有对一个全屏window的情况做特殊处理，也就是不管几个window，至少走一次合成。所以3d的app如果不需要ui的话，还是直接用drm api吧，少一次合成。
+，最后[QOpenGLCompositor](https://github.com/qt/qtbase/blob/6bceb4a8a9292ce9f062a38d6fe143460b54370e/src/platformsupport/platformcompositor/qopenglcompositor.cpp)会合成所有的window的textures。   
+Qt EGLFS的流程还是很清晰的，就是先window自己合成好一个buffer， 然后QOpenGLCompositor把所有的window再render到一个buffer上，然后这个buffer送drm显示。
 
 类推的话，Wayland应该也是类似的，可能再多一层窗口的GPU合成（不知道全屏会不会少掉这一层，没实验）。当然Wayland还有其他的特殊情况，比如overlay的窗口直接走DRM合成。
 
-至于X11,太复杂了，dri，ddx，几乎没办法确定整个显示的流程。我猜测的话，qteglfs是只经过了一次GPU拷贝，一次GPU合成，但x11下就是一次GPU合成，一次GPU拷贝，然后一次CPU合成（实验上看，这次合成少不掉），所以X11下会更慢。
+至于X11,太复杂了，dri，ddx，几乎没办法确定整个显示的流程。
 
 #### links
 <http://doc.qt.io/qt-5/embedded-linux.html>
