@@ -50,7 +50,8 @@ QT EGLFS的流程其实可以通过代码追踪一下。
 根据代码，一个qmlvideo的显示过程会是这样的(非qml的话不一样，会优先用xvimagesink的subwindow)，surface路径会是QDeclarativeVideoOutput->QDeclarativeVideoRendererBackend,显示一帧frame的话，会先调用到
 [QDeclarativeVideoRendererBackend::updatePaintNode](http://doc.qt.io/qt-5/qquickitem.html#updatePaintNode)，然后就是返回一个NV12 to RGB的shader，走正常qtquick程序的显示[显示](http://doc.qt.io/qt-5/qtquick-visualcanvas-scenegraph.html#scene-graph-and-rendering)
 	，最后[QOpenGLCompositor](https://github.com/qt/qtbase/blob/6bceb4a8a9292ce9f062a38d6fe143460b54370e/src/platformsupport/platformcompositor/qopenglcompositor.cpp)会合成所有的window。   
-Qt EGLFS的流程还是很清晰的，就是先window自己合成好一个buffer， 然后QOpenGLCompositor把所有的window再render到一个buffer上，然后这个buffer送drm显示（其实在qt eglfs下就是一个window，所以这里直接就是window buffer送drm了）。
+
+Qt EGLFS的流程还是很清晰的，就是先window自己render(qquickwindow是用的GPU)一个buffer， 然后QOpenGLCompositor把所有的window再render到一个buffer上，然后这个buffer送drm显示（如果就是一个primary window，就直接送drm了）。
 
 类推的话，Wayland应该也是类似的。当然Wayland还有其他的特殊情况，比如overlay的窗口直接走DRM合成。
 
