@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Embedded Linux 图形（长期更新）
+title: Embedded Linux 图形 
 category: [Linux, CN]
 ---
 
@@ -56,6 +56,7 @@ Qt EGLFS的流程还是很清晰的，就是先window自己render(qquickwindow�
 类推的话，Wayland应该也是类似的。当然Wayland还有其他的特殊情况，比如overlay的窗口直接走DRM合成。
 
 至于X11,太复杂了，dri，ddx，几乎没办法确定整个显示的流程。
+
 
 #### links
 <http://doc.qt.io/qt-5/embedded-linux.html>

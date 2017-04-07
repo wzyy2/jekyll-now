@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Yocto workflow（长期更新）
+title: Yocto workflow 
 category: [Yocto, CN]
 ---
 
@@ -123,6 +123,11 @@ Yocto 有一套乱七八糟的包依赖管理，所以到后面我们会不确�
 ### 集成服务器
 
 Yotco 有一个构建服务器叫 toaster， 等待研究。
+
+toaster看起来并不是我想象中的CI服务器，应该来说只是一个build track web interface而已，在上面可以用web的方式比较方便的获取构建信息，比如build了几个包，花了多少时间，用的什么配置。
+
+只能简单的用toaster来承担CI服务器的效果了，可以对接上测试服务器测试当前的代码，另外还可以用apache把build完后的image暴露出来，对内提供固件。
+
 
 # 参考资料
 
