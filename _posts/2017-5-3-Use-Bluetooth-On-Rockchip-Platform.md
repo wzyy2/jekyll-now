@@ -44,10 +44,19 @@ net/rkkill/rfkill-rk.c下面有一些rk写的rfkill代码，主要用来控制�
 
 rtk：
 
+    rtk_hciattach -n -s 115200 ttyS0 rtk_h5
 
-bcm：
+brcm：
 
-hciattach -s 115200 /dev/ttyS0 bcm43xx 115200
+    brcm_patchram_plus -d --enable_hci --no2bytes --use_baudrate_for_download --tosleep 20000 --baudrate 1500000 --patchram /etc/firmware/bcm4339a0.hcd /dev/ttyS0 &
+
+brcm_patchram_plus版本：  
+https://github.com/rockchip-linux/meta-rockchip/tree/morty/recipes-bsp/brcm-patchram-plus
+
+然后再 hciconfig, 可以看到bt起来
+
+    root@mq:~# hciconfig -a
+    hci0: Type: Primary Bus: UART
 
 
 # Function
