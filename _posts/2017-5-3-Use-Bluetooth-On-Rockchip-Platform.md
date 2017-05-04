@@ -56,15 +56,22 @@ https://github.com/rockchip-linux/meta-rockchip/tree/morty/recipes-bsp/brcm-patc
 然后再 hciconfig, 可以看到bt起来
 
     root@mq:~# hciconfig -a
-    hci0: Type: Primary Bus: UART
+    hci0: Type: Primary Bus: UART
+    
+# DEBUG
 
+参考RK BT文档里的常见问题，一般是没上电阿，uart通信有问题，晶体问题
 
 # Function
 
-## A2DP
+## BT 4.0
+
+BT模式下的可以用linux上的一些工具，比如blueman来验证，配对，传文件，a2dp
 
 ## BLE 
+
 ### Central
+
 ### Peripheral
 
 
