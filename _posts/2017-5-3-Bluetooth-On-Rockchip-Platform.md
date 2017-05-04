@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Use Bluetooth On Rockchip Linux Platform
+title: Bluetooth On Rockchip Linux Platform
 category: [Linux, CN]
 ---
 
