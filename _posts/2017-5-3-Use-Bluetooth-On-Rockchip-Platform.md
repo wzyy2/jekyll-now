@@ -56,7 +56,7 @@ https://github.com/rockchip-linux/meta-rockchip/tree/morty/recipes-bsp/brcm-patc
 然后再 hciconfig, 可以看到bt起来
 
     root@mq:~# hciconfig -a
-    hci0: Type: Primary Bus: UART
+    hci0: Type: Primary Bus: UART
     
 # DEBUG
 
