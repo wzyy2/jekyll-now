@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Rockchip Linux Known issues
-category: [Linux, EN]
+category: [EN]
 ---
 
 There are some known issues and i don't have a good way to fix it, so list them in here.
