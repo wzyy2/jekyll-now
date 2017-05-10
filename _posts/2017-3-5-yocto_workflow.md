@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Yocto workflow 
-category: [Yocto, CN]
+category: [CN]
 ---
 
 Yocto 还算一个蛮新的东西，可能很多人都不太熟悉。我最近在看的时候，资料都挺难找的，虽然官方的 documents 很全，但是对入手的人很不友好，
