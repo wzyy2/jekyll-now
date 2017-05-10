@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Embedded Linux 图形 
-category: [Linux, CN]
+category: [CN]
 ---
 
 “How to choose display backend”， 如果有错误，请帮忙评论修正。
