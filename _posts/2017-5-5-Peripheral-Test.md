@@ -1,5 +1,5 @@
 ---
 layout: post
 title: 常用外设测试
-category: [Linux, CN]
+category: [CN]
 ---
