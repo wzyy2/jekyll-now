@@ -10,9 +10,10 @@ category: [CN]
 https://github.com/rockchip-linux/kernel/blob/release-4.4/drivers/spi/spidev.c
 
 如果你想要有spidev出现在sysfs下，你需要在dts里注册这个spidev！
-  bus {
-    spidev ...
-  }
+
+    bus {
+      spidev ...
+    }
 
 bus是bus，dev是dev，spidev作为虚拟的设备，也是必须要声明这个dev才会被probe。
 
