@@ -36,6 +36,6 @@ https://erlerobotics.gitbooks.io/erle-robotics-erle-brain-a-linux-brain-for-dron
 
 可以用下面办法直接写寄存器
 
-    cd /sys/bus/mdio_bus/devices/stmmac-0\:01
-    echo 20 > phy_reg
-    echo 0x400 > phy_regValue
+    cd /sys/bus/mdio_bus/devices/stmmac-0\:01 
+    echo 20 > phy_reg 
+    echo 0x400 > phy_regValue 
