@@ -4,8 +4,6 @@ title: Embedded Linux 图形
 category: [CN]
 ---
 
-“How to choose display backend”， 如果有错误，请帮忙评论修正。
-
 # Overview
 
 对于Android开发者来说，基本不用关心图形方案这些细节，你只要调用java的class，最后的性能都是有原厂和谷歌验证过的。
