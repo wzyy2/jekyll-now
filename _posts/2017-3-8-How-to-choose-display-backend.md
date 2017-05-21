@@ -19,16 +19,16 @@ category: [CN]
 X11的基础构架，建议先谷歌一下，太庞大，历史遗留比较多，到现在我也没弄清楚一些调用流程。  
 
 下面主要讲讲dri2。dri2是xserver用来连接gpu的结构，下面这个链接里蛮详细的， <https://en.wikipedia.org/wiki/Direct_Rendering_Infrastructure>。  
-大概理解，dri2自己管理一个window下面的buffers， xserver都不会过问，只有swap front buffer的时候，才会调一些函数来wait page flip来进行画面的同步。不过这个front buffer是false的，要注意，最后显示还要进行compoiste。理论上（理论上哦，实际我测出来还是一样慢。。），dri2全屏和不全屏的性能差距会比较大，因为全屏的情况下，dri2出来的flase front buffer，也就是这个window的drawbuffer， 是直接被作为全局的font buffer，送到ddx显示的，省去了compoiste。  
-所以在x11下开发3d应用的时候，一定要全屏，保证没有多余的compoiste。     
+大概理解，dri2自己管理一个window下面的buffers， xserver都不会过问，只有swap front buffer的时候，才会调一些函数来wait page flip来进行画面的同步。不过这个front buffer是false的，要注意，最后显示还要进行compoiste（以rk的xserver为例，这里会用到[cpu blit](https://github.com/rockchip-linux/xserver/blob/rockchip-1.18/hw/xfree86/drivers/modesetting/dri2.c#L620)， 而wayland和qt eglfs这步是gpu做的）, 。dri2全屏和不全屏的性能差距会比较大，因为全屏的情况下，dri2出来的flase front buffer，也就是这个window的drawbuffer， 是直接被作为全局的font buffer，送到ddx显示的，省去了compoiste。
+所以在x11下开发3d应用的时候，一定要全屏，保证没有多余的compoiste，比如qt的qmlwindow就是一个完整的gl窗口（注：debian上不是）。   
 
 另外一提，rk平台上的xserver，还支持了glamor，意味一些compoiste可以被gpu加速到，如果是做多窗口的应用或者desktop类型的产品，这个featrue还是非常有用的，能运行x11上的所有软件，又有gpu加速合成。   
-
-Xserver在移动平台除了一些软件兼容性的问题可以用用，长久来看，是一定要被淘汰的。
 
 #### 2017.3.10
 做了些实验，x11下egl的lag，在拉高cpu频率之后，显著的缓解，所以应该就是cpu参与了合成步骤，导致效率变低。
 
+#### 2017.5.21
+在debian看到一些比较慢的现象，要注意不是x11的问题，而是debian的程序编译选项一般没带上gles。
 
 #### links
 <https://en.wikipedia.org/wiki/X.Org_Server>  
@@ -51,11 +51,6 @@ QT EGLFS的流程其实可以通过代码追踪一下。
 
 Qt EGLFS的流程还是很清晰的，就是先window自己render(qquickwindow是用的GPU)一个buffer， 然后QOpenGLCompositor把所有的window再render到一个buffer上，然后这个buffer送drm显示（如果就是一个primary window，就直接送drm了）。
 
-类推的话，Wayland应该也是类似的。当然Wayland还有其他的特殊情况，比如overlay的窗口直接走DRM合成。
-
-至于X11,太复杂了，dri，ddx，几乎没办法确定整个显示的流程。
-
-
 #### links
 <http://doc.qt.io/qt-5/embedded-linux.html>
 
@@ -64,7 +59,7 @@ Qt EGLFS的流程还是很清晰的，就是先window自己render(qquickwindow�
 wayland是Linux上下一代的display server，从结构上来讲，也最相近android上的[HWC](http://dragon.leanote.com/post/Android%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F-II-%E6%9E%B6%E6%9E%84)，全部的compoiste都是gpu来做的，不会有xserver那样cpu合成的场景。    
 wayland除了gpu合成以外，另一个优势，就是overlay接口的存在，能允许移动平台上的一些2d加速模块，display模块在这个接口上被调用（这些模块才是移动平台能跑大分辨率ui的关键）。
 
-wayland一定会在mobile平台占有很重要的地位，但是要走的路还很长。
+wayland主要的问题是兼容性，比如你用qtmultimedia的话，会发现video sink不能换，因为不兼容wayland的窗口api。
 
 
 #### links
