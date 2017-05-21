@@ -19,7 +19,8 @@ category: [CN]
 X11的基础构架，建议先谷歌一下，太庞大，历史遗留比较多，到现在我也没弄清楚一些调用流程。  
 
 下面主要讲讲dri2。dri2是xserver用来连接gpu的结构，下面这个链接里蛮详细的， <https://en.wikipedia.org/wiki/Direct_Rendering_Infrastructure>。  
-大概理解，dri2自己管理一个window下面的buffers， xserver都不会过问，只有swap front buffer的时候，才会调一些函数来wait page flip来进行画面的同步。不过这个front buffer是false的，要注意，最后显示还要进行compoiste（以rk的xserver为例，这里会用到[cpu blit](https://github.com/rockchip-linux/xserver/blob/rockchip-1.18/hw/xfree86/drivers/modesetting/dri2.c#L620)， 而wayland和qt eglfs这步是gpu做的）, 。dri2全屏和不全屏的性能差距会比较大，因为全屏的情况下，dri2出来的flase front buffer，也就是这个window的drawbuffer， 是直接被作为全局的font buffer，送到ddx显示的，省去了compoiste。
+大概理解，dri2自己管理一个window下面的buffers， xserver都不会过问，只有swap front buffer的时候，才会调一些函数来wait page flip来进行画面的同步。不过这个front buffer是false的，要注意，最后显示还要进行compoiste（以rk的xserver为例，这里会用到[cpu blit](https://github.com/rockchip-linux/xserver/blob/rockchip-1.18/hw/xfree86/drivers/modesetting/dri2.c#L620)， 而wayland和qt eglfs这步是gpu做的）。  
+dri2全屏和不全屏的性能差距会比较大，因为全屏的情况下，dri2出来的flase front buffer，也就是这个window的drawbuffer， 是直接被作为全局的font buffer，送到ddx显示的，省去了compoiste。 
 所以在x11下开发3d应用的时候，一定要全屏，保证没有多余的compoiste，比如qt的qmlwindow就是一个完整的gl窗口（注：debian上不是）。   
 
 另外一提，rk平台上的xserver，还支持了glamor，意味一些compoiste可以被gpu加速到，如果是做多窗口的应用或者desktop类型的产品，这个featrue还是非常有用的，能运行x11上的所有软件，又有gpu加速合成。   
