@@ -6,7 +6,7 @@ category: [CN]
 
 Yocto 还算一个蛮新的东西，可能很多人都不太熟悉。我最近在看的时候，资料都挺难找的，虽然官方的 documents 很全，但是对入手的人很不友好，
 总结起来就是缺少一份入门的 guide。能找到的大部分 guide，在教你输入 bitbake core-image-base 后就没内容了。
-然后呢？我能用 yocto 干什么，我该怎么用 yocto 去做这些事情？还是需要很长的时间去整理和提炼。
+然后呢？我能用 yocto 干什么，我该怎么用 yocto 去做这些事情
 
 
 # 开发内核
@@ -41,6 +41,14 @@ Yocto 还算一个蛮新的东西，可能很多人都不太熟悉。我最近�
 # 开发应用
 
 目前修改应用我和修改kernel差不多用法，但是 yocto 的 document 里还介绍了一些工具，如 devtool，Quilt，等待研究。
+不同于内核，应用和bootloader的代码都在tmp/work目录下面，根据recipes的不同，分布不同。  
+编译和内核是一样的，也是
+
+	bitbake app -c compile -f
+	
+但要注意deploy不一样。
+如果也是打包在image里，那重新bitbake一次image就可以。
+但如果是单独更新，就最好不能用deploy了（bootloader除外），需要进`tmp/work/*/package-name/version/deploy-packages/`下面拿deb出来，然后用其他办法传板子上，用dpkg安装。
 
 # 离线工作
 
@@ -107,7 +115,7 @@ Yocto 里有很多什么 IMAGE_FEATURES 啊 DISTRO_FEATURES 啊， 因为很多�
 
 ### 更新代码
 
-不是清楚，暂时用下面的办法更新代码
+暂时这样更新代码
 
 	bitbake linux-rockchip -c clean && bitbake linux-rockchip
 
