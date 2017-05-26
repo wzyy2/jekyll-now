@@ -41,7 +41,7 @@ https://pan.baidu.com/s/1cgZ0Km
 如果是虚拟机，会比较麻烦，一定要确认usb设备挂载在*虚拟机*！.
 根据[“Linux user guide”](http://opensource.rock-chips.com/wiki_Linux_user_guide)，
 在板子进入*maskrom*以后，使用以下命令烧写完整镜像，这条命令本质是先通过rkdeveloptool下载我们的loader到板子内存里运行，
-然后再通过这个loader把这个firware.img写到偏移为0的地址，system这个字符串代表的偏移地址在[“这里”](https://github.com/rockchip-linux/build/blob/debian/partitions.sh#L10)定义：
+然后再通过loader把firware.img写到偏移为0的地址，system字符串代表的偏移地址在[“这里”](https://github.com/rockchip-linux/build/blob/debian/partitions.sh#L10)定义：
 
         build/flash_tool.sh -p system -i firmware.img
 
