@@ -59,7 +59,7 @@ Window下还有有一个[“量产工具”](https://github.com/rockchip-linux/r
 * 本质上我们linux没有严格限制的分区，不存在什么地方一定要烧到那里，但为了方便统一我们也定了一个[“分区表”](http://opensource.rock-chips.com/wiki_Partitions)。
 * 所有烧写，实际都不是根据这个*GPT分区*来的，而是通过指定存储的*偏移地址*烧的, Window工具和Linux工具最终用的都是偏移。之所以烧写的时候看到什么boot，loader参数，是因为提前根据分区表约定了好这个地方是干嘛。所以烧的时候要灵活，比如window工具烧完整固件，把偏移地址改成0就好了。
 * 除了指定偏移地址烧写，我自己开发的时候也比较多的依赖*uboot*下的*ums*模式（guide里有介绍），本质就是通过uboot把设备模拟成u盘，这样可以在电脑上像u盘一样操作板子，拷贝资料，替换内核等等。
-* 内核和dtb实际是没有任何打包的，我们烧写的时候出现一个boot.img，实际上那是一个fat镜像，然后把zimage和dtb拷了进去，然后方便我们通过偏移地址直接写。如果是ums模式，直接`cp out/kernel/* /media/user/boot`就可以了。
+* 内核和dtb实际是没有任何打包的，我们烧写的时候出现一个boot.img，实际上那是一个fat镜像，然后把zimage和dtb拷了进去，然后方便我们通过偏移地址直接写。如果是ums模式，直接 `cp out/kernel/* /media/user/boot` 就可以了。
 * 注意GPT分区表！ gpt分区表分布在0x00的地方，如果一开始我们不是烧的完整镜像，而是分开烧的，会缺失GPT表，需要在uboot下`gpt write mmc 0 $partitions`，或者rkdeveloptool也可以写这个gpt。
 
 
@@ -79,7 +79,7 @@ Window下还有有一个[“量产工具”](https://github.com/rockchip-linux/r
 
 交叉编译的原理是利用debian系的multiarch机制，不过这种办法需要有一个与目标机一致的系统。
 
-[”dockerfile“](https://github.com/rockchip-linux/docker-rockchip) 可以解决这个问题，而且[”dockerfile“](https://github.com/rockchip-linux/docker-rockchip/blob/master/dockerfilee)里可以提前配置相关的环境。
+[”Docker“](https://github.com/rockchip-linux/docker-rockchip) 可以解决这个问题，而且[”dockerfile“](https://github.com/rockchip-linux/docker-rockchip/blob/master/dockerfilee)里可以提前配置相关的环境。
 一般使用docker的workflow是:
 
 进docker bash，还有挂上源码目录：
@@ -90,11 +90,11 @@ Window下还有有一个[“量产工具”](https://github.com/rockchip-linux/r
 
         cd /home/rk/packages/mpp
 
-编译（实际上这条命令就是根据写好的编译规则调用相应的cmake，make这些） （加 -nc 可以不重编）
+编译（实际上这条命令就是根据写好的编译规则调用相应的cmake，make这些） （加 -nc 可以不clean）
 
         DEB_BUILD_OPTIONS=nocheck debuild  -i-us -uc -b -d  -aarmhf
 
-编译完成后，~/workbench/debian-sdk/packages里就会出现对应的deb。
+编译完成后，~/workbench/debian-sdk/packages里就会出现对应的deb,可以dpkg -i安装。
 
 还有编译选项可以在rules文件里配置：  
 https://github.com/rockchip-linux/mpp/blob/for_linux/debian/rules
@@ -116,7 +116,7 @@ https://github.com/rockchip-linux/mpp/blob/for_linux/debian/rules
 不过我们使用都比较少。
 
 jenkins：
-http://172.16.22.122:8080/
+http://172.16.22.122:8080/  
 yocto toaster:
-http://172.16.22.122:8000/toastergui/builds/?limit=25&page=1&orderby=-completed_on&default_orderby=-completed_on&
-http://172.16.22.122/data/poky/build-toaster-2/
+http://172.16.22.122:8000/toastergui/builds/?limit=25&page=1&orderby=-completed_on&default_orderby=-completed_on&  
+http://172.16.22.122/data/poky/build-toaster-2/  
