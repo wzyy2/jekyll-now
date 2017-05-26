@@ -84,7 +84,7 @@ Window下还有有一个[“量产工具”](https://github.com/rockchip-linux/r
 
 进docker bash，还有挂上源码目录：
 
-        docker run -it -v ~/workbench/debian-sdk/packages:/home/rk/packages rockchip bash -
+        docker run -it -v ~/workbench/debian-sdk/packages:/home/rk/packages rockchip /bin/bash
 
 在docker里进入应用目录
 
@@ -96,7 +96,7 @@ Window下还有有一个[“量产工具”](https://github.com/rockchip-linux/r
 
 编译完成后，~/workbench/debian-sdk/packages里就会出现对应的deb,可以dpkg -i安装。
 
-还有编译选项可以在rules文件里配置：  
+编译选项可以在rules文件里配置：  
 https://github.com/rockchip-linux/mpp/blob/for_linux/debian/rules
 
 ## 传文件
@@ -115,8 +115,9 @@ https://github.com/rockchip-linux/mpp/blob/for_linux/debian/rules
 服务器都是挂在vpn上的，为了防止网络问题。
 不过我们使用都比较少。
 
-jenkins：
-http://172.16.22.122:8080/  
-yocto toaster:
+jenkins：  
+http://172.16.22.122:8080/ 
+
+yocto toaster:  
 http://172.16.22.122:8000/toastergui/builds/?limit=25&page=1&orderby=-completed_on&default_orderby=-completed_on&  
 http://172.16.22.122/data/poky/build-toaster-2/  
