@@ -15,8 +15,8 @@ category: [CN]
 * http://opensource.rock-chips.com/wiki_Yocto
 * http://opensource.rock-chips.com/wiki_Cross_Compile
 
-如果要搭建编译环境， 一定要看*Linux user guide*
-一般工程师开发请基于这个，使用debian系统开发linux, 
+如果要搭建编译环境， 一定要看*Linux user guide*。  
+如果不是具体的项目应用开发，rootfs选debian就可以。
 
 # 系统环境
 系统上，推荐是[“ubuntu 16.04”](https://www.ubuntu.com/download/desktop)或者debian9 lxde。
