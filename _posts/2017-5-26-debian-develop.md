@@ -29,7 +29,7 @@ category: [CN]
 
 for rk3288-evb-lpddr3-act8846:  
 
-https://pan.baidu.com/s/1cgZ0Km
+https://pan.baidu.com/s/1eSkpqQe
 
 
 ## 烧写方法
@@ -79,7 +79,7 @@ Window下还有有一个[“量产工具”](https://github.com/rockchip-linux/r
 
 交叉编译的原理是利用debian系的multiarch机制，不过这种办法需要有一个与目标机一致的系统。
 
-[”Docker“](https://github.com/rockchip-linux/docker-rockchip) 可以解决这个问题，而且[”dockerfile“](https://github.com/rockchip-linux/docker-rockchip/blob/master/dockerfilee)里可以提前配置相关的环境。
+[”Docker“](https://github.com/rockchip-linux/docker-rockchip) 可以解决这个问题，而且[”dockerfile“](https://github.com/rockchip-linux/docker-rockchip/blob/master/dockerfile)里可以提前配置相关的环境。
 一般使用docker的workflow是:
 
 进docker bash，还有挂上源码目录：
