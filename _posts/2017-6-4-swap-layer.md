@@ -58,7 +58,7 @@ place to add code(need a check for if it's primary)
 
 ## Others
 
-Somtimes we need a 1080P UI with 4K video layer in 4K resolution for smooth, then we might need this patch.  
+Somtimes we need a 1080P UI with the video layer in 4K resolution for smooth, then we might need this patch.  
 
 The Kernel Patch for 1080P UI + 4K video layer :  
 [kernel patch 3](https://github.com/LongChair/LibreELEC.tv/blob/rockchip_wip/projects/Rockchip/patches/linux/rockchip-4.4/linux-0016-drm-allow-framebuffer-and-videomodes-not-to-have-sam.patch)
