@@ -53,7 +53,7 @@ reg:
 [enable reg](https://github.com/rockchip-linux/kernel/blob/release-4.4/drivers/gpu/drm/rockchip/rockchip_drm_vop.h#L246 )
 
 
-place to add code(need check if it's primary)
+place to add code(need a check for if it's primary)
 [plane update](https://github.com/rockchip-linux/kernel/blob/release-4.4/drivers/gpu/drm/rockchip/rockchip_drm_vop.c#L1236)
 
 ## Others
