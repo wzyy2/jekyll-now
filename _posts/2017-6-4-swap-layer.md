@@ -43,7 +43,7 @@ Then set the alpha value of the window you want to show video to zero, VOP will 
 
 ## X11 Wayland
 
-On X11 and Wayland backend, we can't make GUI layer transparent becuase of the exists of desktop background.
+On X11 and Wayland backend, we can't make GUI layer transparent by alpha becuase of the exists of desktop background.
 If you set window backgournd color to transparent, it would show background rather than video lyaer, so we can only use color key.
 
 To set color key, it need change kernel code.  
