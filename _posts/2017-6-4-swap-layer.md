@@ -15,7 +15,7 @@ The disadvantage is that wayland have many compatibility problem(e.g QT) and the
 
 2. Change video layer to the bottom  
 In this way, we could make the place we want to show video transparent, so the bottom layer would show up.
-The advantage is that it's the best performance.
+The advantage is that it has the best performance.
 The disadvantage is that it's kind of hacky.
 
 
