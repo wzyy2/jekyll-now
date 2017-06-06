@@ -48,13 +48,11 @@ If you set window backgournd color to transparent, it would show background rath
 
 To set color key, it need some changes in kernel driver.  
 
-reg: 
-[color reg](https://github.com/rockchip-linux/kernel/blob/release-4.4/drivers/gpu/drm/rockchip/rockchip_drm_vop.h#L245  ),
-[enable reg](https://github.com/rockchip-linux/kernel/blob/release-4.4/drivers/gpu/drm/rockchip/rockchip_drm_vop.h#L246 )
+[kernel patch 5](https://github.com/wzyy2/Scripts/blob/master/tmp/0001-drm-rockchip-vop-add-color-key-reg-for-rk3288.patch)
 
+[kernel patch 6](https://github.com/wzyy2/Scripts/blob/master/tmp/0002-drm-rockchip-make-black-a-color-key.patch)
 
-place to add code(need a check for if it's primary)
-[plane update](https://github.com/rockchip-linux/kernel/blob/release-4.4/drivers/gpu/drm/rockchip/rockchip_drm_vop.c#L1236)
+it will make black color a transparency color key.
 
 ## Others
 
