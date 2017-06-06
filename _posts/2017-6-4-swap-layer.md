@@ -41,7 +41,7 @@ To make qt background transparent, we need this patches to change the default co
 Then set the alpha value of the window you want to show video to zero, VOP will skip them when do alpha blending.
 
 
-## X11 Wayland
+## X11
 
 On X11 and Wayland backend, we can't make GUI layer transparent by alpha becuase of the exists of desktop background.
 If you set window backgournd color to transparent, it would show background rather than video lyaer, so we can only use color key.
