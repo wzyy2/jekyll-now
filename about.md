@@ -4,8 +4,8 @@ title: About
 permalink: /about/
 ---
 
-Introduction of myself in my homepage.
-http://iotwrt.com/
+Introduction of myself in my [homepage](http://iotwrt.com/).
+
 
 
 之前一直用的云笔记去做备份，但是发现那些随手记下的东西，时间一久，也就看不懂了。
