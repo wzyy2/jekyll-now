@@ -115,9 +115,9 @@ https://github.com/rockchip-linux/mpp/blob/for_linux/debian/rules
 服务器都是挂在vpn上的，为了防止网络问题。
 不过我们使用都比较少。
 
-jenkins：  
+jenkins（基本没用，废弃了）：  
 http://172.16.22.122:8080/ 
 
-yocto toaster:  
+yocto toaster（用来检测YOCTO的构建，如果想下image的:  
 http://172.16.22.122:8000/toastergui/builds/?limit=25&page=1&orderby=-completed_on&default_orderby=-completed_on&  
-http://172.16.22.122/data/poky/build-toaster-2/  
+http://172.16.22.122/data/poky 
