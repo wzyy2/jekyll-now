@@ -1,0 +1,39 @@
+---
+layout: post
+title: Boot Logo On Rockchip Linux
+category: [EN]
+---
+
+
+Unlik rockchip android, we don't have a complete method for boot logo on linux.
+
+It means you can only show logo by generic way, and there are three parts.
+
+
+## U-boot
+
+First， you need enable video driver in u-boot and make it show console in screen.
+and then, apply below patches.(Don't forget to remove console in screen)
+
+https://github.com/wzyy2/Scripts/blob/master/tmp/U-Boot-v1-1-2-board-rockchip-common-Add-bmp-logo-support.patch  
+https://github.com/wzyy2/Scripts/blob/master/tmp/U-Boot-v1-2-2-rockchip-include-Enable-logo-display-for-evb-rk3399.patch  
+
+
+## Kernel
+
+    CONFIG_LOGO
+
+
+## System
+
+    You can use 'plymouth' to show logo before desktop launched.
+    
+If you are using debian, there are some bug need fix.  
+
+1.  
+Change ExecStartPost in /lib/systemd/system/plymouth-start.service  to ExecStartPost=-/usr/bin/udevadm settle --timeout=30
+--exit-if-exists=/sys/class/drm/card0/dev ; /usr/bin/udevadm settle
+--timeout=30 --exit-if-exists=/sys/class/graphics/fb0/dev ;
+
+2.  
+Add plymouth-quit.service to After in /lib/systemd/system/lightdm.service 
