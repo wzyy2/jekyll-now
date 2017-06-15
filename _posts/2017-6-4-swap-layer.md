@@ -40,6 +40,13 @@ To make qt background transparent, we need this patches to change the default co
 
 Then set the alpha value of the window you want to show video to zero, VOP will skip them when do alpha blending.
 
+#### display
+
+Before starting application, please set below env value to force qt use kmssink to show video on bottom.
+
+  export QT_GSTREAMER_WINDOW_VIDEOSINK=kmssink
+  
+Please notice that only videowidget support using custom sink, qmlvideo can't use the other sink.
 
 ## X11
 
@@ -54,6 +61,14 @@ To set color key, it need some changes in kernel driver.
 
 it will make black color a transparency color key.
 
+#### display
+
+Before starting application, please set below env value to force qt use rkximagesink to show video on bottom.
+
+  export QT_GSTREAMER_WINDOW_VIDEOSINK=rkximagesink
+ 
+Please notice that only videowidget support using custom sink, qmlvideo can't use the other sink.
+  
 ## Others
 
 Somtimes we need a 1080P UI with the video layer in 4K resolution for smooth, then we might need this patch.  
