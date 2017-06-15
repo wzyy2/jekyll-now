@@ -4,8 +4,6 @@ title: Embedded Linux 图形
 category: [CN]
 ---
 
-# Overview
-
 对于Android开发者来说，基本不用关心图形方案这些细节，你只要调用java的class，最后的性能都是有原厂和谷歌验证过的。
 但对Linux开发者来说，情况要复杂的多，没有一个完美方案。。  
 所以当你决定要在Linux要开发应用的时候，一定要明确你的需求,对比方案间的优劣。
