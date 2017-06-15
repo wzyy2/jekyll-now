@@ -4,6 +4,7 @@ title: Linux系统开发随笔
 category: [CN]
 ---
 
+在Rockchip Linux
 
 # 网络资料
 
