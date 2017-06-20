@@ -18,6 +18,11 @@ and then, apply below patches.(Don't forget to remove console in screen)
 https://github.com/wzyy2/Scripts/blob/master/tmp/U-Boot-v1-1-2-board-rockchip-common-Add-bmp-logo-support.patch  
 https://github.com/wzyy2/Scripts/blob/master/tmp/U-Boot-v1-2-2-rockchip-include-Enable-logo-display-for-evb-rk3399.patch  
 
+Since rockchip rom code have litmit the uboot size to 1Mb, so you can't display with big size bmp.
+If you want to display big size bmp, you might need use gzipped bmp.
+
+https://github.com/rockchip-linux/u-boot/blob/release/cmd/bmp.c#L40
+
 
 ## Kernel
 
