@@ -31,7 +31,7 @@ https://github.com/rockchip-linux/u-boot/blob/release/cmd/bmp.c#L40
 
 ## System
 
-    You can use 'plymouth' to show logo before desktop launched.
+You can use 'plymouth' to show logo before desktop launched.
     
 If you are using debian, there are some bug need fix.  
 
