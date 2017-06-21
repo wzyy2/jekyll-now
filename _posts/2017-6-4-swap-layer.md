@@ -64,8 +64,6 @@ it will make black color a transparency color key.
 Before starting application, please set below env value to force qt use rkximagesink to show video on bottom.
 
   export QT_GSTREAMER_WINDOW_VIDEOSINK=rkximagesink
- 
-Please notice that only videowidget support using custom sink, qmlvideo can't use the other sink.
   
 ## Others
 
