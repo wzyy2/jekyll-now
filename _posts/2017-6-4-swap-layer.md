@@ -45,8 +45,6 @@ Then set the alpha value of the window you want to show video to zero, VOP will 
 Before starting application, please set below env value to force qt use kmssink to show video on bottom.
 
   export QT_GSTREAMER_WINDOW_VIDEOSINK=kmssink
-  
-Please notice that only videowidget support using custom sink, qmlvideo can't use the other sink.
 
 ## X11
 
