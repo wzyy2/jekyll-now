@@ -46,7 +46,10 @@ Before starting application, please set below env value to force qt use kmssink 
 
   export QT_GSTREAMER_WINDOW_VIDEOSINK=kmssink
 
-## X11
+#### qt class
+Please use qmlvideo
+
+## X11/Wayland
 
 On X11 and Wayland backend, we can't make GUI layer transparent by alpha becuase of the exists of desktop background.
 If you set window backgournd color to transparent, it would show background rather than video lyaer, so we can only use color key.
@@ -65,6 +68,9 @@ Before starting application, please set below env value to force qt use rkximage
 
   export QT_GSTREAMER_WINDOW_VIDEOSINK=rkximagesink
   
+#### qt class
+Please use qtvideowidget
+
 ## Others
 
 Somtimes we need a 1080P UI with the video layer in 4K resolution for smooth, then we might need this patch.  
