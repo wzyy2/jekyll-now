@@ -28,11 +28,6 @@ https://github.com/rockchip-linux/u-boot/blob/release/cmd/bmp.c#L40
 
 http://blog.csdn.net/wang_zheng_kai/article/details/41847687
 
-Don't forget to set 
-
-    #define PREFERRED_BPP		24
-
-in rockchip_drm_fbdev.c.
 
 ## System
 
