@@ -28,6 +28,8 @@ https://github.com/rockchip-linux/u-boot/blob/release/cmd/bmp.c#L40
 
 http://blog.csdn.net/wang_zheng_kai/article/details/41847687
 
+set logos_freed to false  
+http://elixir.free-electrons.com/linux/latest/source/drivers/video/logo/logo.c#L32
 
 ## System
 
