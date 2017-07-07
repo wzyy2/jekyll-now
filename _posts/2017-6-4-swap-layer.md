@@ -69,7 +69,7 @@ Before starting application, please set below env value to force qt use rkximage
   export QT_GSTREAMER_WINDOW_VIDEOSINK=rkximagesink
   
 #### qt class
-Please use qtvideowidget
+qmlvideo, qtvideowidget
 
 ## Others
 
