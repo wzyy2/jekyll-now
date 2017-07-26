@@ -55,3 +55,10 @@ U-Boot的补丁提交和内核其实差不多，只不过U-Boot有一个很方�
 大部分的开源项目，用好git format-patch和git send-email就可以了。如果是github的，直接web端发pull-request也可以。  
 对于mail list管理开发的项目，还有一个很重要的工具，就是patchwork，具体可以点击下面的链接。  
 https://patchwork.ozlabs.org/，https://patchwork.kernel.org/
+
+#### format
+
+我的内核代码格式化命令, 只Lindent的话, 有些地方还是有缺点的
+
+	~/workbench/debian-sdk/kernel/scripts/Lindent ./*
+	astyle *.c  --style=knf --indent=force-tab=8
