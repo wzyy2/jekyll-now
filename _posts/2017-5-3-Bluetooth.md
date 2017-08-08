@@ -66,7 +66,9 @@ https://github.com/rockchip-linux/meta-rockchip/tree/morty/recipes-bsp/brcm-patc
 
 ## BT 4.0
 
-BT模式下的可以用linux上的一些工具，比如blueman来验证，配对，传文件，a2dp
+### A2DP
+
+choppy的话看下cpufreq, 是不是太低, sbc解码比较吃cpu
 
 ## BLE 
 
