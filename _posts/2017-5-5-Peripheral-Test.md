@@ -1,11 +1,11 @@
 ---
 layout: post
-title: 常用外设测试
+title: Tips
 category: [CN]
 ---
 
 
-这里主要记录一些个人的测试命令。
+这里主要记录一些个人的测试命令和额外的补丁。
 
 
 # spi
@@ -42,3 +42,13 @@ https://erlerobotics.gitbooks.io/erle-robotics-erle-brain-a-linux-brain-for-dron
         cd /sys/bus/mdio_bus/devices/stmmac-0\:01
         echo 20 > phy_reg
         echo 0x400 > phy_regValue
+
+# 单通道ddr 3288
+
+休眠补丁
+https://github.com/wzyy2/Scripts/blob/master/tmp/3288_fix_ddr_single_channel.patch
+
+uboot制作命令
+dd if=tools/rk_tools/bin/rk32/32_LPDDR2_400MHz_LPDDR3_400MHZ_DDR3_400MHZ_20160803.bin
+of=spl.bin bs=4 skip=1 && tools/mkimage -n rk3288 -T rksd -d spl.bin
+rk3288_uboot.img && cat u-boot-dtb.bin >> rk3288_uboot.img
