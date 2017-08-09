@@ -68,7 +68,10 @@ https://github.com/rockchip-linux/meta-rockchip/tree/morty/recipes-bsp/brcm-patc
 
 ### A2DP
 
-choppy的话看下cpufreq, 是不是太低, sbc解码比较吃cpu
+choppy的话看下cpufreq, 是不是太低, sbc解码比较吃cpu 
+
+audio conf, 可以设置force sbc和mpeg
+https://android.googlesource.com/platform/external/bluetooth/bluez/+/android-4.1.1_r4/audio/audio.conf
 
 ## BLE 
 
