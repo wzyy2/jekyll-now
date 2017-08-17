@@ -1,6 +1,6 @@
 # Site Info
 title: Jacob Chen
-tagline: 'Linux Developer'
+tagline: 'A Linux Developer'
 description: ''
 baseurl: ""
 url: http://blog.iotwrt.com
@@ -25,7 +25,7 @@ version: 1.0.0
 # About/contact
 author:
   name: Jacob Chen
-  description: Linux Developer.
+  description: A Linux Developer.
   contact:
     github:    https://github.com/wzyy2
     email:     jacob-chen@iotwrt.com
