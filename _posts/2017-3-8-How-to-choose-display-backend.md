@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Embedded Linux 图形 
+title: 怎么选择 Embedded Linux 的图形框架
 category: [CN]
 ---
 

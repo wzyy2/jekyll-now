@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Tips
+title: Rockchip Linux Tips
 category: [CN]
 ---
 

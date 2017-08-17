@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Burn Mac Address On Rockchip Linux
+title: Burn Mac Address(Rockchip Linux)
 category: [EN]
 ---
 
