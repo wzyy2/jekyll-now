@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Show Boot Logo(Rockchip Linux)
-category: [EN]
+category: [rockchip linux]
+tag: [EN]
 ---
 
 

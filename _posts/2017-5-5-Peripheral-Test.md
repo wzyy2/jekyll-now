@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Rockchip Linux Tips
-category: [CN]
+category: [rockchip linux]
+tag: [CN]
 ---
 
 

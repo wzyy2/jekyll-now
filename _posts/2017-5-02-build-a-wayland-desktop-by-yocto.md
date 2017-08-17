@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Build a wayland desktop by yocto
-category: [EN]
+category: [rockchip linux]
+tag: [EN]
 ---
 
 Wayland has been introduced as a replacement to the x11 for a long time but there is still a long way

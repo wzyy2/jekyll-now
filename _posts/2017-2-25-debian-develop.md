@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Linux系统开发随笔
-category: [CN]
+category: [rockchip linux]
+tag: [CN]
 ---
 
 

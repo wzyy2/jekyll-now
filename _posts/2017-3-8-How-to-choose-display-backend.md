@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 怎么选择 Embedded Linux 的图形框架
-category: [CN]
+category: [rockchip linux]
+tag: [CN]
 ---
 
 对于Android开发者来说，基本不用关心图形方案这些细节，你只要调用java的class，最后的性能都是有原厂和谷歌验证过的。

@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Burn Mac Address(Rockchip Linux)
-category: [EN]
+category: [rockchip linux]
+tag: [EN]
 ---
 
 Unlike rockchip android, we don't limit you how to get mac address. You can write/read it in any places. 

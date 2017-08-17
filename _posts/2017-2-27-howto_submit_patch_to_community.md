@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 如何提交补丁给开源项目
-category: [CN]
+category: [opensource]
+tag: [CN]
 ---
 
 开源项目，社区，你国的程序员对这些东西可能都觉得很神秘，很酷，“哇，你提交过Kernel Patch，大牛啊”。

@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Swap video layer(Rockchip Linux)
-category: [EN]
+category: [rockchip linux]
+tag: [EN]
 ---
 
 By default, Video layer is on top of GUI layer, which means you can't put GUI items on top of video.

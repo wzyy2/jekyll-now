@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Bluetooth(Rockchip Linux)
-category: [CN]
+category: [rockchip linux]
+tag: [CN]
 ---
 
 Rockchip 蓝牙模块统一使用的HCI驱动，因此调试主要是电源相关的配置。
