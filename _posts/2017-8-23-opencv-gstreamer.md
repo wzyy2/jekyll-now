@@ -106,9 +106,3 @@ Rockchip Gstreamer Pipeline:
 [gstreamer-opencv](https://github.com/wzyy2/gstreamer-opencv)
 
 ![](https://github.com/wzyy2/wzyy2.github.io/raw/master/images/opencv-demo.jpg)
-
-
-# Others
-
-还是挺好玩的...
-改天试试Tensorflow(可惜只有CUDA加速, 不知道能不能搞进去OpenCL)
