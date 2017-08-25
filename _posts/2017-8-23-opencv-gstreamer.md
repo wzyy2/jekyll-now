@@ -42,8 +42,8 @@ Gstreamer是嵌入式平台处理Media的首选组件, 像Nvdia/TI/NXP/Rockchip�
 我之前只在X86上使用过OpenCV, 其实不太了解OpenCV在ARM Device需要怎么开发.
 (怀疑其他ARM平台上到底能不能用OpenCV, 因为像TI/NXP这种, CPU/GPU太弱, 估计只能内部的DSP跑算法; 像全志, 基本没有Linux平台的组件支持; 唯一能搞的估计也就是Nvdia的terga了, cuda还是厉害.  ；) )
 
-根据上面ARM的原则, 开发的时候要避免调用到OpenCv的cvtcolor和clone这些函数.  
-OpenCV也支持[OepnCL加速](https://chromium-review.googlesource.com/c/455596), 使用GPU来干脏活.
+根据上面ARM的原则, 开发的时候要避免调用到OpenCv的cvtcolor和clone这些函数, 因为每次拷贝都会消耗大量的CPU资源.  
+OpenCV也支持[OepnCL加速](https://chromium-review.googlesource.com/c/455596), 如果可以的话, 尽量使用GPU来干脏活.
 
 
 # Desgin
@@ -73,8 +73,11 @@ Pipeline Prototype 3:
 
 首先opencv在gstreamer是有plugin的, 但是从应用开发的角度, 这样不够flexible : plugin里的东西和外界是封闭的.
 在实现上, 更建议使用Appsink和AppSrc, 这些模块, 在你的应用里, 是以Thread的形式存在的, 开发起来要更方便.  
-另外还有一点很重要, 就是什么Gstreamer, gobject, 真的很恶心...还是C++舒服...  
-更多懒得解释了, 看代码吧.. :-P
+另外还有一点很重要, 就是什么gstreamer, gobject, 真的很恶心...还是C++舒服...  
+
+更多懒得解释了, 看代码吧.. :-P  
+涉及到的平台坑我都在代码里踩了给你了....  
+结构上大致如下: Gstreamer AppSink不停的送Buffer, 应用MMap出来给OpenCV处理, 完后AppSrc送会Gstreamer显示.
 
 Gstreamer Pipeline:
 
@@ -93,7 +96,7 @@ Rockchip Gstreamer Pipeline:
 
 
 #### Code
- 
+
 一个简单的人脸识别应用:  
 使用了OpenCL加速, 2D加速, 视频硬解加速  
 [gstreamer-opencv](https://github.com/wzyy2/gstreamer-opencv)
