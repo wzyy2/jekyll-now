@@ -60,7 +60,7 @@ Pipeline Prototype 2:
 
         video/rtsp/camera -> decoder -> opencv -> display sink
 
-为了优化显示, 需要把buffer送回给gstreamer, 这样就得到了Prototype 2. 但是是要注意, OpenCV的默认格式是bgr的, 所有的画图函数都是基于bgr； CV的大部分算法都是基于灰度图做处理, 而某些图像格式排列不适合转换灰度图.   
+为了优化显示, 需要把buffer送回给gstreamer, 这样就得到了Prototype 2. 但是是要注意, OpenCV的默认格式是bgr的, 所有的画图函数都是基于bgr； CV的大部分算法都是都需要预处理成灰度图, 而某些图像格式排列不适合转换灰度图.   
 在Rockchip平台上Decoder出来的颜色格式是NV12的, 必须要想办法转换成BGR格式.  
 所以decoder到opencv之间还需要有处理颜色格式的单元, 这个工作不可能由CPU来做, 一般可以使用[专有硬件](http://rockchip.fr/RK3288%20TRM/rk3288-chapter-28-rga2.pdf), 如果相应的平台没有这样的硬件, 
 也可以使用GPU用特定的Shader来转(OpenGL的设计目的里, 加速2D就是很重要的一块, 我们有时候看到QT/Wayland这些地方说使用到GPU加速, 就是用GPU做这样的事).
