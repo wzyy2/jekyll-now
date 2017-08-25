@@ -73,10 +73,8 @@ Pipeline Prototype 3:
 
 首先opencv在gstreamer是有plugin的, 但是从应用开发的角度, 这样不够flexible : plugin里的东西和外界是封闭的.
 在实现上, 更建议使用Appsink和AppSrc, 这些模块, 在你的应用里, 是以Thread的形式存在的, 开发起来要更方便.  
-另外还有一点很重要, 就是什么Gstreamer, gobject, 真的很恶心...还是C++舒服...
-
+另外还有一点很重要, 就是什么Gstreamer, gobject, 真的很恶心...还是C++舒服...  
 更多懒得解释了, 看代码吧.. :-P
-
 
 Gstreamer Pipeline:
 
@@ -93,10 +91,11 @@ Rockchip Gstreamer Pipeline:
         "appsrc caps=video/x-raw,format=(string)BGR,width=(int)1920,height=(int)1080,framerate=(fraction)30/1 \
         block=true name=src ! rkximagesink sync=false";
 
-Code: 
 
+#### Code
+ 
 一个简单的人脸识别应用:  
-使用了OpenCL加速, 2D加速, 视频硬解加速
+使用了OpenCL加速, 2D加速, 视频硬解加速  
 [gstreamer-opencv](https://github.com/wzyy2/gstreamer-opencv)
 
 
