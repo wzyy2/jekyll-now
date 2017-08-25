@@ -71,7 +71,12 @@ Pipeline Prototype 3:
 
 #### Implement
 
-懒得解释了, 看代码吧.. :-P
+首先opencv在gstreamer是有plugin的, 但是从应用开发的角度, 这样不够flexible : plugin里的东西和外界是封闭的.
+在实现上, 更建议使用Appsink和AppSrc, 这些模块, 在你的应用里, 是以Thread的形式存在的, 开发起来要更方便.  
+另外还有一点很重要, 就是什么Gstreamer, gobject, 真的很恶心...还是C++舒服...
+
+更多懒得解释了, 看代码吧.. :-P
+
 
 Gstreamer Pipeline:
 
