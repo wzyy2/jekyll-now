@@ -46,7 +46,7 @@ Gstreamer是嵌入式平台处理Media的首选组件, 像Nvdia/TI/NXP/Rockchip�
 
 OpenCV也支持[OpenCL加速](https://chromium-review.googlesource.com/c/455596), 当然..其实没什么卵用, 尤其你是在处理实时的图像的时候,
 因为GPU处理数据的时候, 需要加载Texture到GPU内存上, 放OpenCL上, 就是你要处理的帧, 全部要拷一份到新的内存地址上....虽然在嵌入式设备上, GPU并没有和CPU使用分离的内存, 完全没必要这么做; 在图形应用的框架上, GPU处理dmabuf都是zero-copy的, 也就是要处理的帧, 只要让GPU MMAP一下就可以了, 而OpenCV, OpenCL, 我是没找到方法...(所以GPU通用计算还是要靠Vulkan了..)  
-当然在算法的处理耗时有好几秒的时候, 加载纹理消耗10毫秒也是可以忽视的----这种场合才建议使用OpenCL.  
+当然在算法的处理耗时有好几秒的时候, 加载纹理消耗10毫秒也是可以忽视的 : 这种场合才建议使用OpenCL.  
 
 
 才发现这个好像是ARM上特有的问题, opencv已经是用了CL_MEM_USE_HOST_PTR, 理论上不应该有拷贝. [但是ARM上这个flag却会导致拷贝](https://developer.arm.com/docs/100614/latest/optimizing-opencl-for-mali-gpus/memory-allocation/do-not-create-buffers-with-cl_mem_use_host_ptr-if-possible), ARM上需要使用[特殊的api](https://www.khronos.org/registry/OpenCL/extensions/arm/cl_arm_import_memory.txt)来做zero-copy.  
