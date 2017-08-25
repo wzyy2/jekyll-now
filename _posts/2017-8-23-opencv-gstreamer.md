@@ -42,8 +42,12 @@ Gstreamer是嵌入式平台处理Media的首选组件, 像Nvdia/TI/NXP/Rockchip�
 我之前只在X86上使用过OpenCV, 其实不太了解OpenCV在ARM Device需要怎么开发.
 (怀疑其他ARM平台上到底能不能用OpenCV, 因为像TI/NXP这种, CPU/GPU太弱, 估计只能内部的DSP跑算法; 像全志, 基本没有Linux平台的组件支持; 唯一能搞的估计也就是Nvdia的terga了, cuda还是厉害.  ；) )
 
-根据上面ARM的原则, 开发的时候要避免调用到OpenCv的cvtcolor和clone这些函数, 因为每次拷贝都会消耗大量的CPU资源.  
-OpenCV也支持[OepnCL加速](https://chromium-review.googlesource.com/c/455596), 如果可以的话, 尽量使用GPU来干脏活, 越大的Frame, 节省的时间越多, 1080p的图片cvtcolor, 能节省一半时间.
+根据上面ARM的原则, 开发的时候要避免调用到OpenCv的cvtcolor和clone这些函数, 因为每次拷贝都会消耗大量的CPU资源.    
+
+OpenCV也支持[OpenCL加速](https://chromium-review.googlesource.com/c/455596), 当然..其实没什么卵用, 尤其你是在处理实时的图像的时候,
+因为GPU处理数据的时候, 需要加载Texture到GPU内存上, 放OpenCL上, 就是你要处理的帧, 全部要拷一份到新的内存地址上....虽然在嵌入式设备上, GPU并没有和CPU使用分离的内存, 完全没必要这么做; 在图形应用的框架上, GPU处理dmabuf都是zero-copy的, 也就是要处理的帧, 只要让GPU MMAP一下就可以了, 而OpenCV, OpenCL, 我是没找到方法...(所以GPU通用计算还是要靠Vulkan了..)  
+当然在算法的处理耗时有好几秒的时候, 加载纹理消耗10毫秒也是可以忽视的----这种场合才建议使用OpenCL.
+
 
 
 # Desgin
@@ -98,7 +102,7 @@ Rockchip Gstreamer Pipeline:
 #### Code
 
 一个简单的人脸识别应用:  
-使用了OpenCL加速, 2D加速, 视频硬解加速  
+使用了2D加速, 视频硬解加速  
 [gstreamer-opencv](https://github.com/wzyy2/gstreamer-opencv)
 
 ![](https://github.com/wzyy2/wzyy2.github.io/raw/master/images/opencv-demo.jpg)
