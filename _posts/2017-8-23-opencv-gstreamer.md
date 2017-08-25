@@ -43,7 +43,7 @@ Gstreamer是嵌入式平台处理Media的首选组件, 像Nvdia/TI/NXP/Rockchip�
 (怀疑其他ARM平台上到底能不能用OpenCV, 因为像TI/NXP这种, CPU/GPU太弱, 估计只能内部的DSP跑算法; 像全志, 基本没有Linux平台的组件支持; 唯一能搞的估计也就是Nvdia的terga了, cuda还是厉害.  ；) )
 
 根据上面ARM的原则, 开发的时候要避免调用到OpenCv的cvtcolor和clone这些函数, 因为每次拷贝都会消耗大量的CPU资源.  
-OpenCV也支持[OepnCL加速](https://chromium-review.googlesource.com/c/455596), 如果可以的话, 尽量使用GPU来干脏活.
+OpenCV也支持[OepnCL加速](https://chromium-review.googlesource.com/c/455596), 如果可以的话, 尽量使用GPU来干脏活, 越大的Frame, 节省的时间越多, 1080p的图片cvtcolor, 能节省一半时间.
 
 
 # Desgin
