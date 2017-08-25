@@ -101,6 +101,8 @@ Rockchip Gstreamer Pipeline:
 使用了OpenCL加速, 2D加速, 视频硬解加速  
 [gstreamer-opencv](https://github.com/wzyy2/gstreamer-opencv)
 
+![](https://github.com/wzyy2/wzyy2.github.io/raw/master/images/opencv-demo.jpg)
+
 
 # Others
 
