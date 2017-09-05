@@ -16,6 +16,19 @@ tag: [CN]
 * [V4l2](https://linuxtv.org/downloads/legacy/video4linux/v4l2dwgNew.html)
 * [OpenCL](https://en.wikipedia.org/wiki/OpenCL)
 
+# Code
+
+一个简单的人脸识别应用:  
+使用了2D加速, 视频硬解加速  
+[gstreamer-opencv](https://github.com/wzyy2/gstreamer-opencv)
+
+#### Changes
+这几天尝试添加了一下异步处理的支持, 这样来看拷贝的方式反而不重要了, 因为一秒里可能就处理了2,3张图片而已,
+拷贝耗时不大.  
+所以拷贝是不是个问题, 得看相应的应用场景和算法需求.
+
+![](https://github.com/wzyy2/wzyy2.github.io/raw/master/images/opencv-demo.jpg)
+
 # Background
 
 #### Gstreamer
@@ -101,11 +114,3 @@ Rockchip Gstreamer Pipeline:
         "appsrc caps=video/x-raw,format=(string)BGR,width=(int)1920,height=(int)1080,framerate=(fraction)30/1 \
         block=true name=src ! rkximagesink sync=false";
 
-
-#### Code
-
-一个简单的人脸识别应用:  
-使用了2D加速, 视频硬解加速  
-[gstreamer-opencv](https://github.com/wzyy2/gstreamer-opencv)
-
-![](https://github.com/wzyy2/wzyy2.github.io/raw/master/images/opencv-demo.jpg)
