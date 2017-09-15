@@ -23,8 +23,8 @@ tag: [CN]
 [gstreamer-opencv](https://github.com/wzyy2/gstreamer-opencv)
 
 #### Changes
-这几天尝试添加了一下异步处理的支持, 这样来看拷贝的方式反而不重要了, 因为一秒里可能就处理了2,3张图片而已,
-拷贝耗时不大.  
+这几天尝试添加了一下异步处理, 这样来看拷贝的方式反而不重要了, 因为一秒里可能就处理了2,3张图片而已,
+拷贝耗时不大, 而且拷贝后的buffer是cached的normal内存, 处理起来速度会更快.
 所以拷贝是不是个问题, 得看相应的应用场景和算法需求.
 
 ![](https://github.com/wzyy2/wzyy2.github.io/raw/master/images/opencv-demo.jpg)
@@ -47,6 +47,7 @@ Gstreamer是嵌入式平台处理Media的首选组件, 像Nvdia/TI/NXP/Rockchip�
 如果你手边正好有一块ARM板子和Linux PC, 可以尝试在上面跑一些memcpy的Test. 一般来说, 测试的性能会相差5,6倍.
 即时是DDR同频的两个系统, 性能也会差到3-4倍(不过也可能是DDR其他参数有影响?).
 内存操作速度的劣势是RISC天生的, ARM也不列外. (虽然也没有研究过对应微处理器结构,道听途说  :-P)
+还有一个更影响速度的就是, 这些Buffer一般都是uncached的DMA Buffer, 为了保证cpu和其他ip的内存一致性, 所以CPU读写速度就更慢了..
 
 在开发OpenCV + Gstreamer的过程中, 一定要尽量避免拷贝的发生, 如果一定要有, 也不能是由CPU来做. (替代可以是2D加速器, GPU)
 
