@@ -10,7 +10,6 @@ tag: [CN]
 比如DMABUF, DRM, OpenCL,G2D...放到像Intel, Nvdia这些平台也是成立的.
 
 下面的内容会涉及一些Linux概念, 如果你不懂的话建议先查阅下相关文章, 当然最好是接触下对应的开发: 
-(有需要解释可以留言, 如果你看的到disqus的话 :-P)
 * [DRM](https://en.wikipedia.org/wiki/Direct_Rendering_Manager)
 * [DMABuf](http://elinux.org/images/a/a8/DMA_Buffer_Sharing-_An_Introduction.pdf6)
 * [V4l2](https://linuxtv.org/downloads/legacy/video4linux/v4l2dwgNew.html)
