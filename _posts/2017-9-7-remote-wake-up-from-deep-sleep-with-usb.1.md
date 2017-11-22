@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Remote Wake Up from Deep Sleep with USB
-category: [rockchip linux]
+category: [tips]
 tag: [EN]
 ---
 

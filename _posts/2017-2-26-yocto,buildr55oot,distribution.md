@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 嵌入式Linux的选择
-category: [rockchip linux]
+category: [opensource]
 tag: [CN]
 ---
 

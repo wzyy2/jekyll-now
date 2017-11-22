@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Swap video layer(Rockchip Linux)
-category: [rockchip linux]
+category: [tips]
 tag: [EN]
 ---
 

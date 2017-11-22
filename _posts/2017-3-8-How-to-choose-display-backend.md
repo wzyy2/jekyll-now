@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 怎么选择 Embedded Linux 的图形框架
-category: [rockchip linux]
+category: [opensource]
 tag: [CN]
 ---
 

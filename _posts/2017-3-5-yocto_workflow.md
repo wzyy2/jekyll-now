@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Yocto workflow 
-category: [rockchip linux]
+category: [opensource]
 tag: [CN]
 ---
 

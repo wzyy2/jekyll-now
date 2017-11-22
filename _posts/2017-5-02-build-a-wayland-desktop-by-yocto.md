@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Build a wayland desktop by yocto
-category: [rockchip linux]
+category: [opensource]
 tag: [EN]
 ---
 
