@@ -96,8 +96,7 @@ Pipeline Prototype 3:
 在实现上, 更建议使用Appsink和AppSrc, 这些模块, 在你的应用里, 是以Thread的形式存在的, 开发起来要更方便.  
 另外还有一点很重要, 就是什么gstreamer, gobject, 其实挺难用， 用C++会舒服很多。
 
-更多懒得解释了, 看代码吧.. :-P  
-结构上大致如下: Gstreamer AppSink不停的送Buffer, 应用MMap出来给OpenCV处理, 完后AppSrc送会Gstreamer显示.
+代码结构上很简单: Gstreamer AppSink不停的送Buffer, 应用MMap出来给OpenCV处理, 完后AppSrc送会Gstreamer显示.
 
 Gstreamer Pipeline:
 
