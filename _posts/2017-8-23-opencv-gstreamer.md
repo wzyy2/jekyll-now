@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Use OpenCV with Gstreamer
-category: [rockchip linux]
+category: [media]
 tag: [CN]
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 嵌入式Linux的选择
-category: [opensource]
+category: [linux]
 tag: [CN]
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Build a wayland desktop by yocto
-category: [opensource]
+category: [linux]
 tag: [EN]
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Yocto workflow 
-category: [opensource]
+category: [linux]
 tag: [CN]
 ---
 

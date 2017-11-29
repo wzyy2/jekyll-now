@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Bluetooth(Rockchip Linux)
-category: [rockchip linux]
+category: [linux]
 tag: [CN]
 ---
 

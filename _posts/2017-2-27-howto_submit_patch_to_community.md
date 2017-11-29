@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 如何提交补丁给开源项目
-category: [opensource]
+category: [linux]
 tag: [CN]
 ---
 

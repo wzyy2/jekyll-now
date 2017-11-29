@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Gstreamer学习
-category: [rockchip linux]
-tag: [EN]
+category: [media]
+tag: [CN]
 ---
 
 接触Gstreamer有一段时间了，但一直没有系统的了解过Gstreamer的结构，只是停留在”打补丁“这样的一种开发思维上。
