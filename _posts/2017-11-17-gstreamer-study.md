@@ -12,11 +12,11 @@ tag: [EN]
 
 gstreamer是基于gobject开发的一个库，所以学习gstreamer前，需要先了解下gobject相关的基础。
 
-### 中文 ： https://www.ibm.com/developerworks/cn/linux/l-gobject/
+## 中文 ： https://www.ibm.com/developerworks/cn/linux/l-gobject/
 
 一开始，可以先简单的看看这篇中文文章，对gobject有一个基础的认识。
 
-### 英文 ： https://developer.gnome.org/gobject/stable/
+## 英文 ： https://developer.gnome.org/gobject/stable/
 
 在后面的学习过程中，如果有遇到不理解，可以再回来check官方的manual
 
@@ -31,6 +31,29 @@ https://gstreamer.freedesktop.org/documentation/application-development/introduc
 关于gstreamer对使用者最主要的用处，见这段话:  
  > The application programmer who wants to build a media pipeline. The programmer can use an extensive set of powerful tools to create media pipelines without writing a single line of code. Performing complex media manipulations becomes very easy.
 
+Foundations里解释了一些在使用gstreamer的时候会遇到的名词，比如什么是elements，什么是pads。
+
+# Application
+
+https://gstreamer.freedesktop.org/documentation/application-development/basics/index.html
+
+过一遍即可，不过如果还没用过gstreamer的话，最好先用gst-launch多输几条命令玩玩先。
+这里主要是进一步了解什么是elements, bins, pads, buffer以及你该如何在应用中使用。
+
+## Player
+
+如果你是要做一个player，同时又是要直接使用gstreamer的话，看这里：  
+https://gstreamer.freedesktop.org/documentation/application-development/highlevel/index.html
+
+使用playbin和decodebin来简化程序。
+
+## Advance
+
+https://gstreamer.freedesktop.org/documentation/application-development/advanced/index.html
+
+# Plugin
+
+https://gstreamer.freedesktop.org/documentation/plugin-development/index.html
 
 # Others
 
