@@ -55,6 +55,11 @@ https://gstreamer.freedesktop.org/documentation/application-development/advanced
 
 https://gstreamer.freedesktop.org/documentation/plugin-development/index.html
 
+## Memory
+
+https://gstreamer.freedesktop.org/documentation/plugin-development/advanced/allocation.html
+关于memory的部分可以多看看，有助于编写程序。
+
 # Others
 
 如果你的App不满足于media pipeline，你不会也不想写gstreamer plugin，那可以看看博客里的另一篇gstreamer+opencv，可以了解下如果使用appsink和appsrc，来达到类似ffmpeg输入输出的效果。
