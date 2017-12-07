@@ -63,3 +63,13 @@ https://gstreamer.freedesktop.org/documentation/plugin-development/advanced/allo
 # Others
 
 如果你的App不满足于media pipeline，你不会也不想写gstreamer plugin，那可以看看博客里的另一篇gstreamer+opencv，可以了解下如果使用appsink和appsrc，来达到类似ffmpeg输入输出的效果。
+
+## tips
+
+### 看playbin选了什么plugin
+
+```
+export GST_DEBUG=decodebin:6
+```
+
+会报出选中的plugin。
