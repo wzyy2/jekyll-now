@@ -51,6 +51,12 @@ Yocto 还算一个蛮新的东西，可能很多人都不太熟悉。我最近�
 如果也是打包在image里，那重新bitbake一次image就可以。  
 但如果是单独更新，就最好不能用deploy了（bootloader除外），需要进`tmp/work/*/package-name/version/deploy-packages/`下面拿deb出来，然后用其他办法传板子上，用dpkg安装。
 
+比如下面这样， 从pc上scp过来。
+```
+scp chen@192.168.10.237:/home/chen/workbench/rk-community-bsp/xwayland/tmp/work/cortexa17hf-neon-vfpv4-rk-linux-gnueabi/mpv/git
+-r0/deploy-debs/cortexa17hf-neon-vfpv4/mpv_git-r0_armhf.deb  ./
+```
+
 # 离线工作
 
 默认用 yocto 有一个问题，就是必须要保证网络在连接状态。如果想离线工作，还需要做一些配置
