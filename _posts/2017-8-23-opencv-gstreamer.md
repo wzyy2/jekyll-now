@@ -45,6 +45,7 @@ Gstreamer是嵌入式平台处理Media的首选组件, 像Nvdia/TI/NXP/Rockchip�
 还有一个更影响速度的就是, 这些Buffer一般都是uncached的DMA Buffer, 为了保证cpu和其他ip的内存一致性, 所以CPU读写速度就更慢了..
 
 在开发OpenCV + Gstreamer的过程中, 一定要尽量避免拷贝的发生, 如果一定要有, 也不能是由CPU来做. (替代可以是2D加速器, GPU)
+(当然这里用2D加速拷出来后buffer，默认还是uncached的，还是不适合CPU直接在上面处理，就算改成cache的，cache刷新的时间也要10ms+。。不过如果你的算法需要CPU去实时处理每帧的话，我想一般的ARM CPU都做不到吧)
 
 #### OpenCV
 
