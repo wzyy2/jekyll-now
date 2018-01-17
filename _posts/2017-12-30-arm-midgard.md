@@ -7,11 +7,6 @@ tag: [CN]
 
 最近突然对arm mali gpu的硬件结构蛮有兴趣，所以找了篇arm上的文章看了下。
 
-https://community.arm.com/graphics/b/blog/  
-https://community.arm.com/graphics/b/blog/posts/the-mali-gpu-an-abstract-machine-part-1---frame-pipelining  
-https://community.arm.com/graphics/b/blog/posts/the-mali-gpu-an-abstract-machine-part-3---the-midgard-shader-core  
-https://community.arm.com/graphics/b/blog/posts/the-mali-gpu-an-abstract-machine-part-2---tile-based-rendering  
-https://community.arm.com/graphics/b/blog/posts/the-mali-gpu-an-abstract-machine-part-4---the-bifrost-shader-core  
 看得就是这篇arm的文章，我来尝试简单复述一下这个文章里的内容。
 
 # The CPU-GPU rendering pipeline
@@ -76,3 +71,12 @@ https://www.cnblogs.com/gameknife/p/3515714.html
 
 # The Bifrost Shader Core
 新的the Bifrost family GPU的shader core， 区别于midgard的shader core，没什么好看的。。。
+
+
+# 文章链接
+
+https://community.arm.com/graphics/b/blog/  
+https://community.arm.com/graphics/b/blog/posts/the-mali-gpu-an-abstract-machine-part-1---frame-pipelining  
+https://community.arm.com/graphics/b/blog/posts/the-mali-gpu-an-abstract-machine-part-3---the-midgard-shader-core  
+https://community.arm.com/graphics/b/blog/posts/the-mali-gpu-an-abstract-machine-part-2---tile-based-rendering  
+https://community.arm.com/graphics/b/blog/posts/the-mali-gpu-an-abstract-machine-part-4---the-bifrost-shader-core  
