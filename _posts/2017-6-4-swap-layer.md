@@ -81,4 +81,4 @@ The Kernel Patch for 1080P UI + 4K video layer :
 
 
 The Qt patch for 1080 UI:  
-[kernel patch 4](https://github.com/LongChair/LibreELEC.tv/blob/4622c5fdb30a9639e6f76973af5398308bf5ec74/packages/plex/multimedia/qt5/patches/qt5-016-eglfs_kms-allow-framebuffer-upscale.patch)
+[kernel patch 4](https://github.com/rockchip-linux/meta-rockchip/blob/master/dynamic-layers/qt5-layer/recipes-qt/qt5/qtbase/0001-eglfs_kms-allow-framebuffer-upscale.patch)

@@ -57,6 +57,10 @@ scp chen@192.168.10.237:/home/chen/workbench/rk-community-bsp/xwayland/tmp/work/
 -r0/deploy-debs/cortexa17hf-neon-vfpv4/mpv_git-r0_armhf.deb  ./
 ```
 
+更新：
+其实可以用devtool的，看这里
+https://www.yoctoproject.org/docs/1.8/dev-manual/dev-manual.html#devtool-modifying-a-recipe
+
 # 离线工作
 
 默认用 yocto 有一个问题，就是必须要保证网络在连接状态。如果想离线工作，还需要做一些配置
