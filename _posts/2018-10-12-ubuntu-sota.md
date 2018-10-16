@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [OS]OS for Autonomous Vehicle: Ubuntu
+title: OS for Autonomous Vehicle: Ubuntu
 category: [OS]
 tag: [CN]
 ---
