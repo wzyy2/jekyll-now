@@ -33,13 +33,29 @@ tag: [CN]
 
 # Advantages
 
+
 这么多区县级独角兽客户喜欢选择Ubuntu，肯定还是有原因的。
+
+## 生态
+
+Ubuntu最主要的优势在于生态。  
+比如说现在我们想要运行tensorflow，如果你使用的Yocto，那你要做的事情有
+* 移植bazel到yocto
+* 整理tensorflow的依赖到yocto
+* 基于yocto编译tensorflow
+
+对于Classic Ubuntu而言，你只需要输入`sudo apt-get install xxx`就可以安装了。
+
+编译部署过后，代码还会存在版本适配的问题：lib1的版本A跑的正常，用版本B替换后出现问题。  
+在Ubuntu上，有非常多的开发者和你用着同样的环境，这种问题基本已经暴露。
+
+## Workaround
 
 * 硬件平台的规格越来越高，Gigabyte的存储需求对很多应用场景来说并不是问题
 * 没有定制性无所谓，在没有几百人的OS Team前，没人想去动他们
 * OTA是可以通过粗暴的方法实现的，比如说A/B分区，比如说snapshot
-
-对于有历史包袱的桌面系统而言，很多通过snapshot的方式来实现SOTA/备份等功能。但是对端侧设备而言，这样的实现开销是比较大的：snapshot的copy-on-write特性导致系统体积增大。
+  
+关于OTA，对有历史包袱的桌面系统而言，很多通过snapshot的方式来实现SOTA/备份等功能。虽然对端侧设备而言，这样的实现开销是比较大的：snapshot的copy-on-write特性导致系统体积增大。
 
 ![](https://github.com/wzyy2/wzyy2.github.io/raw/master/images/overlay.png)
 
