@@ -15,7 +15,7 @@ tag: [CN]
 * “powerful customization architecture”，小到几mb的IoT OS，大到完整的Debian Desktop，都可以在这个框架下生成。
 * "compile everything from source"，整个项目，从最底层的libc/gcc到最终运行的应用，都有比较清晰的管控。 
 
-但是，除开一些比较专业的老外客户，~~出货量大的项目~~等，会去选择Yocto以外，基本不吃我这套忽悠，Ubuntu/Debian发行版被选择的比例更大。
+但是，除开一些比较专业的客户，会去选择Yocto以外，基本不吃我这套忽悠，Ubuntu/Debian发行版选择的比例更大。
 
 # Disadvantages
 
@@ -109,8 +109,6 @@ Ubuntu最主要的优势在于生态。
 ![](https://github.com/wzyy2/wzyy2.github.io/raw/master/images/dgx-docker-1024x970.png)
 
 # Continue
-
-后续计划
 
 * System OTA： 为Ubuntu实现系统固件OTA
 * OS Build system： 构建/发布基于Ubuntu系统的无人车固件
