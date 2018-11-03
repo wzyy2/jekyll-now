@@ -18,7 +18,7 @@ description: >
   A Linux Developer
 baseurl: ""
 url: "http://blog.iotwrt.com"
-permalink: /:tag/:year/:month/:day/:title
+permalink: /:year/:month/:day/:title
 # repository: ShawnTeoh/matjek
 paginate: 5
 
