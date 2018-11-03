@@ -1,4 +1,6 @@
-_site
+*~
+*.gem
+.bundle
 .sass-cache
-.c9
+_site
 Gemfile.lock

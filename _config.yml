@@ -1,58 +1,46 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+
 # Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
 title: Jacob Chen
-url: http://blog.iotwrt.com    # the protocol and hostname of your site, eg. `http://laobubu.github.io`
-baseurl: "" # the prefix of your site uri, eg. `"/jekyll-theme-EasyBook"` or empty string `""`
-#timezone: Asia/Chongqing
 description: >
   A Linux Developer
-
-# Your information
-email: jacob-chen@iotwrt.com
-author: Jacob Chen
-avatar: '/public/logo.png'
-profile: A Linux Developer ———— Kernel/U-Boot/RTOS, Graphics/Media/IoT, Autonomous drive/Robotics
-#twitter_username: twitter_username
-github_username:  wzyy2
-profile_links:
-  Email: "mailto:jacob-chen@iotwrt.com"
-  GitHub: "https://github.com/wzyy2"
-  # You can add more profile links above, or edit _includes/sidebar.html 
-
-# Comment Service (Disqus or 多说)
-#  choose one and un-comment the line to active it
-disqus_shortname: 'iotwrt'   # get one: https://disqus.com/admin/signup/
-#duoshuo_shortname: xxx  # get one: http://duoshuo.com/create-site/
-
-excerpt_separator: <!--more-->
-
-header:
-  links:             # Links on the header. Link to in-site page with a slash as prefix
-    About: /about/
-    Category: /category/
-
+baseurl: ""
+url: "http://blog.iotwrt.com"
 permalink: pretty
-plugins:
- - jekyll-paginate
- - jekyll-gist
- - jemoji
+# repository: ShawnTeoh/matjek
+paginate: 5
+
+# MatJek specific configurations
+github_profile: "https://github.com/wzyy2"
+user: "Jacob Chen"
+user_email: "jacob-chen@iotwrt.com"
+# contact_url: "https://goo.gl/tVljbV"zyy2
+# google_tracking_id: "UA-96359860-1"
+# google_site_verification: "UA-96359860-1"
+disqus_shortname: "iotwrt"
 
 # Build settings
-paginate: 5
-paginate_path: "page:num"
-
-highlighter: rouge
 markdown: kramdown
-
-# https://jekyllrb.com/docs/configuration/#precedence
-defaults:
-  -
-    scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
-
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
-  math_engine: mathjax
+gems:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-sitemap
+exclude:
+  - Gemfile
+  - Gemfile.lock
+sass:
+  style: compressed
+future: true
