@@ -26,10 +26,11 @@ paginate: 5
 github_profile: "https://github.com/wzyy2"
 user: "Jacob Chen"
 user_email: "jacob-chen@iotwrt.com"
-# contact_url: "https://goo.gl/tVljbV"zyy2
-# google_tracking_id: "UA-96359860-1"
-# google_site_verification: "UA-96359860-1"
-disqus_shortname: "iotwrt"
+#contact_url: "https://goo.gl/tVljbV"
+google_tracking_id: "UA-96359860-1"
+google_site_verification: "UA-96359860-1"
+disqus_shortname: 'iotwrt'
+disqus_short_name: 'iotwrt'
 
 # Build settings
 markdown: kramdown
