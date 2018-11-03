@@ -3,8 +3,11 @@ layout: page
 title: "Contact"
 css: ["contact.css"]
 ---
-<div class="col s12">
-  <div class="icontain">
-    <iframe src="{{site.contact_url}}">Loading...</iframe>
-  </div>
-</div>
+
+Mail(Main): jacob-chen@iotwrt.com
+Mail(Mail-list): jacobchen110@gmail.com
+Mail(Cainiao): yanliu.ch@cainiao.com
+Mail(Rockchip): jacob2.chen@rock-chips.com
+
+QQ: 547884940
+
