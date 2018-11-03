@@ -12,12 +12,14 @@ $brown:    #8f5536;
 $default:  #505050;
 $ali:  #f37327;
 $cainiao:  #0066ff;
+$cainiao2:  #66ff00;
 
 $white:      #fff;
 $lightgrey:  #eee;
 $black:      #000;
 
-$theme-color: $cainiao;
+$theme-color: darken($cainiao, 20%);
+$theme-color2: $cainiao2;
 $theme-color-dark: darken($theme-color, 10%);
 
 $post-date-color: #9a9a9a;
