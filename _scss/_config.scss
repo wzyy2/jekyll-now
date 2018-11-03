@@ -18,9 +18,10 @@ $white:      #fff;
 $lightgrey:  #eee;
 $black:      #000;
 
-$theme-color: darken($cainiao, 20%);
-$theme-color2: $cainiao2;
+$theme-color: darken($cainiao, 10%);
+$theme-color2: darken($cainiao2, 10%)
 $theme-color-dark: darken($theme-color, 10%);
+$theme-color2-dark: darken($theme-color2, 10%);
 
 $post-date-color: #9a9a9a;
 $title-color: #313131;
