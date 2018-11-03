@@ -1,10 +1,10 @@
 .post-tag {
   display: inline-block;
-  background: rgba($theme-color2, 0.15);
+  background: rgba($theme-color, 0.15);
   padding: 0 .5rem;
   margin-right: .5rem;
   border-radius: 4px;
-  color: $theme-color2;
+  color: $theme-color;
   font-family: $font-sans;
   font-size: 90%;
   &:before {
@@ -14,7 +14,7 @@
   }
   &:hover {
     text-decoration: none;
-    background: $theme-color2;
+    background: $theme-color;
     color: $white;
   }
   @include transition(all .1s ease-in-out);
