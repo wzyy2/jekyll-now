@@ -1,49 +1,58 @@
-# Site Info
+# Site settings
 title: Jacob Chen
-tagline: 'A Linux Developer'
-description: ''
-baseurl: ""
-url: http://blog.iotwrt.com
-logo: '/public/logo.png'
+url: http://blog.iotwrt.com    # the protocol and hostname of your site, eg. `http://laobubu.github.io`
+baseurl: "" # the prefix of your site uri, eg. `"/jekyll-theme-EasyBook"` or empty string `""`
+#timezone: Asia/Chongqing
+description: >
+  A Linux Developer
 
-# Site configurations
-gems:
-  - jekyll-paginate
+# Your information
+email: jacob-chen@iotwrt.com
+author: Jacob Chen
+avatar: '/public/logo.png'
+profile: A Linux Developer ———— Kernel/U-Boot/RTOS, Graphics/Media/IoT, Autonomous drive/Robotics
+#twitter_username: twitter_username
+github_username:  wzyy2
+profile_links:
+  Email: "mailto:jacob-chen@iotwrt.com"
+  GitHub: "https://github.com/wzyy2"
+  # You can add more profile links above, or edit _includes/sidebar.html 
+
+# Comment Service (Disqus or 多说)
+#  choose one and un-comment the line to active it
+disqus_shortname: 'iotwrt'   # get one: https://disqus.com/admin/signup/
+#duoshuo_shortname: xxx  # get one: http://duoshuo.com/create-site/
+
+excerpt_separator: <!--more-->
+
+header:
+  links:             # Links on the header. Link to in-site page with a slash as prefix
+    About: /about/
+    Category: /category/
+
+permalink: pretty
+plugins:
+ - jekyll-paginate
+ - jekyll-gist
+ - jemoji
+
+# Build settings
+paginate: 5
+paginate_path: "page:num"
+
+highlighter: rouge
 markdown: kramdown
+
+# https://jekyllrb.com/docs/configuration/#precedence
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
 kramdown:
   input: GFM
-excerpt_separator: "<!-- more -->"
-sass:
-  style: compressed
-  sass_dir: _scss
-paginate: 5
-paginate_path: '/blog/page:num'
-permalink: pretty
-
-version: 1.0.0
-
-# About/contact
-author:
-  name: Jacob Chen
-  description: A Linux Developer.
-  contact:
-    github:    https://github.com/wzyy2
-    email:     jacob-chen@iotwrt.com
-
-# Navigation (2nd level links supported)
-nav:
-  Blog:
-    - '/blog/'
-    - { Categories: '/blog/categories/' }
-    - { Tags: '/blog/tags/' }
-  About:
-    - '/about/'
-
-# Where are tags and categories displayed
-tag_page: '/blog/tags/'
-category_page: '/blog/categories/'
-
-# Puglins
-mathjax: true # whether support mathjax
-disqus_short_name: 'iotwrt' # leave blank if you don't want disqus
-
+  syntax_highlighter: rouge
+  math_engine: mathjax
