@@ -5,4 +5,4 @@ category: [OS]
 tag: [CN]
 ---
 
-<embed src="https://github.com/wzyy2/wzyy2.github.io/raw/master/images/real-time.png/auto.pdf" >
+<embed src="https://github.com/wzyy2/wzyy2.github.io/raw/master/images/real-time.png/auto.pdf" width="425" height="425">
