@@ -13,7 +13,7 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Jacob Chen's Blog
+title: Keep It Simple，Stupid！
 description: >
   A Linux Developer
 baseurl: ""
