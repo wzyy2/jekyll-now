@@ -5707,7 +5707,8 @@ button.btn-floating {
 
 .side-nav .collapsible-body li a,
 .side-nav.fixed .collapsible-body li a {
-  padding: 0 32px;
+  padding: 0 16px;
+  font-size: 11px;
 }
 
 .collapsible.popout {
