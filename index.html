@@ -11,6 +11,11 @@ css: ["index.css"]
         <p id="post-date">
           <i class="material-icons">date_range</i>
           {{post.date | date: "%d/%m/%Y %H:%M"}}
+          
+          <span id="{{ page.url }}" class="leancloud_visitors" data-flag-title="{{ page.title }}">
+              Hits:  <span class="leancloud-visitors-count"></span>
+          </span>
+
         </p>
         <p id="post-content">{{post.excerpt | remove: '<p>' | remove: '</p>'}}</p>
       </div>

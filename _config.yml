@@ -45,3 +45,8 @@ exclude:
 sass:
   style: compressed
 future: true
+
+leancloud:
+  enable: true
+  app_id: lKSuCE23rFxH12daY4zEhGHb-gzGzoHsz
+  app_key: 6LU8xD6mQ2mvUwNPtIoErMmd
