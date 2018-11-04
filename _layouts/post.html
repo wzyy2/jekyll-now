@@ -13,8 +13,9 @@ js: ["post.js"]
           <i class="material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="Date">date_range</i>
           {{page.date | date: "%d/%m/%Y"}}
 
-          <span id="{{ page.url }}" class="leancloud_visitors" data-flag-title="{{ page.title }} style="margin:0px;padding:0px">
-            Hits: <span style="margin:0px;padding:0px" class="leancloud-visitors-count"> </span>
+          <span id="{{ page.url }}" class="leancloud_visitors" data-flag-title="{{ page.title }}" style="
+            margin:0px;padding:0px;display:contents;">
+            Hits: <span style="margin:0px;padding:0px;display:contents;" class="leancloud-visitors-count"> </span>
           </span>
 
           <i id="indicate" class="right material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="Show extra info">info</i>
