@@ -2344,6 +2344,7 @@ hr {
  */
 pre {
   overflow: auto;
+  white-space: normal;
 }
 
 /**
