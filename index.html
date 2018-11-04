@@ -12,7 +12,7 @@ css: ["index.css"]
           <i class="material-icons" style="display: inline; float: none;">date_range</i>
           {{post.date | date: "%d/%m/%Y"}}&nbsp;&nbsp;
 
-          <span id="{{ page.url }}" class="leancloud_visitors" data-flag-title="{{ page.title }}">
+          <span id="{{ post.url }}" class="leancloud_visitors" data-flag-title="{{ post.title }}">
               <i class="material-icons" style="display: inline; float: none;">visibility</i> Hits:  <span class="leancloud-visitors-count"></span>
           </span>
 
