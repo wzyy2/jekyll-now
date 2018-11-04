@@ -64,17 +64,14 @@ Participate in CSDN Open source summer camp, work for RT-Thread Community. Imple
 Skills
 ----------------------------------------
 #### good
-- languages: c, c++  
-- kernel: drm, dts, v4l2  
-- system: yocto, qt  
-- u-boot, rtos, iot  
+- languages: C, C++  
+- Kernel, GNU/Linux, U-boot, RTOS
+- Multimedia, Autonomous Drive
 
 #### fair
-- languages: python, shell, java, javascript  
-- kernel: dvfs, clock, mmc, WiFi, BT  
-- graphics: gles, weston, xserver  
-- media: gstreamer   
-- Web, android  
+- languages: Python, Shell, Java, Javascript  
+- Graphics, IoT
+
 
 Others
 ----------------------------------------
