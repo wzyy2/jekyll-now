@@ -65,8 +65,25 @@
         <li><a class="waves-effect" href="{{site.baseurl}}/about"><i class="material-icons">person</i>About</a></li>
         <li><a class="waves-effect" href="{{site.baseurl}}/contact"><i class="material-icons">email</i>Contact</a></li>
         <li><div class="divider"></div></li>
-        <li><img src="{{site.baseurl}}/images/china.gif" alt="logo" width="100%"/></li>
-        <li><div class="divider"></div></li>
+
+        {% for cat in site.categories %}
+        {% capture test %}{{cat[0] | slice: 0}}{% endcapture %}
+        {% capture testup %}{{cat[0] | slice: 0 | upcase}}{% endcapture %}
+        <h4 id="{{cat[0] | slugify}}{% if test == testup %}_cap{% endif %}">{{cat[0]}}</h4>
+        <ul class="cat-post">
+            {% for post in cat[1] %}
+            <a class="post-title" href="{{site.baseurl}}{{post.url}}" target="_blank">
+              <li>
+                {{post.title}}
+                <small class="post-date">{{post.date | date_to_string}}</small>
+              </li>
+            </a>
+            {% endfor %}
+          </ul>
+        {% endfor %}
+      
+        <img src="{{site.baseurl}}/images/city.gif" alt="logo" width="100%"/>
+
       </ul>
     </header>
     <main>
