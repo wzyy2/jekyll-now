@@ -6,16 +6,12 @@ js: ["post.js"]
 <div id="post-info">
   <h1>{{page.title}}</h1>
 
-  <span id="{{ page.url }}" class="leancloud_visitors" data-flag-title="{{ page.title }}">
-      Hits:  <span class="leancloud-visitors-count"></span>
-  </span>
-
-  <!-- <ul class="collapsible hoverable" data-collapsible="accordion">
+<ul class="collapsible hoverable" data-collapsible="accordion">
     <li>
       <div class="collapsible-header">
         <span>
           <i class="material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="Date">date_range</i>
-          {{page.date | date: "%d/%m/%Y %H:%M"}}
+          {{page.date | date: "%d/%m/%Y"}}
           <i id="indicate" class="right material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="Show extra info">info</i>
         </span>
       </div>
@@ -38,7 +34,8 @@ js: ["post.js"]
         </span>
       </div>
     </li>
-  </ul> -->
+  </ul>
+
 </div>
 <div class="divider"></div>
 <div class="row">
