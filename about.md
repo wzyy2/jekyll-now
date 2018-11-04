@@ -37,12 +37,12 @@ Code contribution to Open Source projects, such as linux kernel, u-boot etc.
 
 **2018.04 - Present, Software Engineer, Alibaba Group, Cainiao Logistics**
 
-Develop and maintain system software for the autonomous vehicles， including Kernel,ROS,RTOS.
+Develop and maintain system software for the autonomous vehicles, including Kernel/ROS/RTOS.
 
 
 **2017.05 - Present, software engineer, Rockchip Inc, ChromeOS Team**
 
-Multi-Media softwares for Rockchip GNU/Linux， including [MIPI-CSI(ISP) v4l2 Driver](https://patchwork.kernel.org/patch/10119579/),[RGA v4l2 Driver](https://patchwork.kernel.org/patch/9875883/),Gstreamer.
+Multi-Media softwares for Rockchip GNU/Linux, including [MIPI-CSI(ISP) v4l2 Driver](https://patchwork.kernel.org/patch/10119579/)/[RGA v4l2 Driver](https://patchwork.kernel.org/patch/9875883/)/Gstreamer.
 
 **2016.05 - Present, software engineer, Rockchip Inc, ChromeOS Team**
 
