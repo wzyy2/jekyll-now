@@ -10,12 +10,12 @@ js: ["post.js"]
     <li>
       <div class="collapsible-header">
         <span>
-          <i class="material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="Date">date_range</i>
+          <i class="material-icons tooltipped" style="display: inline; float: none;" data-position="left" data-delay="30" data-tooltip="Date">date_range</i>
           {{page.date | date: "%d/%m/%Y"}}&nbsp;&nbsp;
 
           <span id="{{ page.url }}" class="leancloud_visitors" data-flag-title="{{ page.title }}" style="
             margin:0px;padding:0px;display:contents;">
-            <i class="material-icons">visibility</i> Hits: <span style="margin:0px;padding:0px;display:contents;" class="leancloud-visitors-count"> </span>
+            <i class="material-icons" style="display: inline; float: none;">visibility</i> Hits: <span style="margin:0px;padding:0px;display:contents;" class="leancloud-visitors-count"> </span>
           </span>
 
           <i id="indicate" class="right material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="Show extra info">info</i>

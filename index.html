@@ -9,11 +9,11 @@ css: ["index.css"]
       <div class="card-content">
         <span id="post-title" class="card-title">{{post.title}}</span>
         <p id="post-date">
-          <i class="material-icons">date_range</i>
+          <i class="material-icons" style="display: inline; float: none;">date_range</i>
           {{post.date | date: "%d/%m/%Y"}}&nbsp;&nbsp;
 
           <span id="{{ page.url }}" class="leancloud_visitors" data-flag-title="{{ page.title }}">
-              <i class="material-icons">visibility</i> Hits:  <span class="leancloud-visitors-count"></span>
+              <i class="material-icons" style="display: inline; float: none;">visibility</i> Hits:  <span class="leancloud-visitors-count"></span>
           </span>
 
         </p>
