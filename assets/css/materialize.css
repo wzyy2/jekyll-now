@@ -2312,7 +2312,7 @@ img {
   display: block;
   max-width: 100%;
   /* margin: 0 0 1rem; */
-  border-radius: 5px;
+  border-radius: 0px;
 }
 
 /**
@@ -5647,7 +5647,7 @@ button.btn-floating {
   -webkit-tap-highlight-color: transparent;
   min-height: 3rem;
   line-height: 3rem;
-  padding: 0 32px;
+  padding: 1rem;
   background-color: #fff;
   border-bottom: 1px solid #ddd;
 }
@@ -5686,7 +5686,7 @@ button.btn-floating {
   border: none;
   line-height: inherit;
   height: inherit;
-  padding: 0 16px;
+  padding: 0 32px;
 }
 
 .side-nav .collapsible-header:hover,
@@ -5707,7 +5707,7 @@ button.btn-floating {
 
 .side-nav .collapsible-body li a,
 .side-nav.fixed .collapsible-body li a {
-  padding: 0 23.5px 0 31px;
+  padding: 0 32px;
 }
 
 .collapsible.popout {
@@ -7223,7 +7223,7 @@ input[type=range]:focus::-ms-fill-upper {
 .side-nav .userView {
   position: relative;
   padding: 32px 32px 0;
-  margin-bottom: 8px;
+  margin-bottom: 0px;
 }
 
 .side-nav .user-view > a,
