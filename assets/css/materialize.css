@@ -5669,6 +5669,10 @@ button.btn-floating {
   padding: 0 32px;
 }
 
+.side-nav .collapsible-body li a, .side-nav.fixed .collapsible-body li a {
+  font-size: 11px;
+}
+
 .side-nav .collapsible,
 .side-nav.fixed .collapsible {
   border: none;
