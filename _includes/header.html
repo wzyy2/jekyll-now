@@ -47,21 +47,6 @@
           <i class="material-icons">menu</i>
         </a>
       </div>
-
-      <ul class="collapsible">
-          <li>
-            <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-          </li>
-          <li>
-            <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-          </li>
-          <li>
-            <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-          </li>
-        </ul>
   
       <ul id="slide-out" class="side-nav fixed collapsible collapsible-accordion">
         <li>
@@ -88,7 +73,7 @@
         {% capture testup %}{{cat[0] | slice: 0 | upcase}}{% endcapture %}
         <li>
           <a class="collapsible-header waves-effect waves-teal" tabindex="0"> {{cat[0]}}</a>
-          <div class="collapsible-body" style="display: block;"> <ul> <li><a href="color.html">Color</a></li> <li><a href="grid.html">Grid</a></li> <li><a href="helpers.html">Helpers</a></li> <li><a href="media-css.html">Media</a></li> <li><a href="pulse.html">Pulse</a></li> <li><a href="sass.html">Sass</a></li> <li><a href="shadow.html">Shadow</a></li> <li><a href="table.html">Table</a></li> <li><a href="css-transitions.html">Transitions</a></li> <li class="active"><a href="typography.html">Typography</a></li> </ul> </div>
+          <div class="collapsible-body" style="display: block;"> <ul> <li><a href="color.html">Color</a></li> </ul> </div>
         </li>
         {% endfor %}
       
