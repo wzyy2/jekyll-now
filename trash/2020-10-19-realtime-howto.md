@@ -23,18 +23,3 @@ Systems that interact with the real world must synchronize with it。
 ### IMU
 ### IMU
 
-真值采集
-administrator@NL-R02N001:~$ rostopic info /autogo/sensors/imu
-Type: sensor_msgs/Imu
-
-Publishers: 
- * /autogo/sensors/imu_gs1810_capt_node (http://NL-R02N001:38649/)
-
-Subscribers: 
- * /autogo/guardian/guardian (http://NL-R02N001:37103/)
- * /autogo/planning/motion_planner_node (http://NL-R02N001:39751/)
- * /autogo/localization/msckf_ros_cainiao (http://NL-R02N001:39825/)
- * /asp/record_radar/rosbag_record (http://NL-R02N001:34921/)
- * /asp/record_other/rosbag_record (http://NL-R02N001:46497/)
- * /autogo/applications/autogo_monitor (http://NL-R02N001:39353/)
- * /autogo/applications/rostopic_7449_1540467111675 (http://NL-R02N001:39525/)
