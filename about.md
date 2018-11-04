@@ -5,28 +5,23 @@ css: ["about.css", "animate.css", "morphext.css"]
 js: ["morphext.min.js", "about.js"]
 ---
 
-Jacob Chen
-============
+## Jacob Chen
+
 Mobile：18200113850  
 E-Mail：jacob-chen@iotwrt.com
 
-Summary
----------
+### Summary
 
 Linux Software Engineer, Embeded System Engineer.  
 Solid Linux software development background, from lowlevel to highlevel, hardware/media/graphics.  
 Code contribution to Open Source projects, such as linux kernel, u-boot etc.  
 
-
-
-Education
----------
+### Education
 
 2012 - 2016
 :   **bachelor, Electronic Information Science and Technology; University of Electronic Science and Technology of China (Chendu)**
 
-Career
-----------
+### Career
 
 2018.04 - Present
 : **Software Engineer, Alibaba Group, Cainiao Logistics**
@@ -37,8 +32,8 @@ Career
 2015.07 - 2015.10 
 :   **software engineer(intern), Xiaomi Inc, IOT Team**
 
-Experience
-----------
+### Experience
+
 
 **2018.04 - Present, Software Engineer, Alibaba Group, Cainiao Logistics**
 
@@ -61,8 +56,8 @@ Study iot, develop software for BLE module.
 
 Participate in CSDN Open source summer camp, work for RT-Thread Community. Implemented a [gdb stub](https://github.com/RT-Thread/rt-thread/tree/master/components/gdb).
 
-Skills
-----------------------------------------
+### Skills
+
 #### good
 - languages: C, C++  
 - Kernel, GNU/Linux, U-boot, RTOS
@@ -73,7 +68,7 @@ Skills
 - Graphics, IoT
 
 
-Others
-----------------------------------------
+### Others
+
 - Github：https://github.com/wzyy2  
 - Blog：http://blog.iotwrt.com  
