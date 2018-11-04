@@ -65,9 +65,7 @@
         <li><a class="waves-effect" href="{{site.baseurl}}/about"><i class="material-icons">person</i>About</a></li>
         <li><a class="waves-effect" href="{{site.baseurl}}/contact"><i class="material-icons">email</i>Contact</a></li>
         <li><div class="divider"></div></li>
-
-        <a class="collapsible-header waves-effect waves-teal" tabindex="0"> linux</a>
-
+  
         {% for cat in site.categories %}
         {% capture test %}{{cat[0] | slice: 0}}{% endcapture %}
         {% capture testup %}{{cat[0] | slice: 0 | upcase}}{% endcapture %}
