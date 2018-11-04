@@ -5647,7 +5647,7 @@ button.btn-floating {
   -webkit-tap-highlight-color: transparent;
   min-height: 3rem;
   line-height: 3rem;
-  padding: 0 1rem;
+  padding: 0 32px;
   background-color: #fff;
   border-bottom: 1px solid #ddd;
 }
@@ -5666,7 +5666,7 @@ button.btn-floating {
   display: none;
   border-bottom: 1px solid #ddd;
   box-sizing: border-box;
-  padding: 2rem;
+  padding: 0 32px;
 }
 
 .side-nav .collapsible,
