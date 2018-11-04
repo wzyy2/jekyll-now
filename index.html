@@ -14,8 +14,8 @@ css: ["index.css"]
         </p>
         <p id="post-content">{{post.excerpt | remove: '<p>' | remove: '</p>'}}</p>
       </div>
-      <div class="card-action" style="color:#64dd17">
-        <a href="{{post.url | prepend: site.baseurl}}">
+      <div class="card-action" >
+        <a href="{{post.url | prepend: site.baseurl}}" style="color:#64dd17">
           Read More
         </a>
       </div>
