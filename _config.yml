@@ -50,3 +50,9 @@ leancloud:
   enable: true
   app_id: lKSuCE23rFxH12daY4zEhGHb-gzGzoHsz
   app_key: 6LU8xD6mQ2mvUwNPtIoErMmd
+
+disqus_proxy:
+  shortname: iotwrt
+  username: iotwrt
+  host: iotwrt.com
+  port: 5509
