@@ -22,7 +22,7 @@ js: ["post.js"]
         </span>
       </div>
       <div class="collapsible-body">
-        <span>
+        <!-- <span>
           <i class="material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="Categories">sort</i>
           {% for cat in page.categories %}
           {% capture test %}{{cat | slice: 0}}{% endcapture %}
@@ -31,14 +31,14 @@ js: ["post.js"]
             <div class="chip">{{cat}}</div>
           </a>
           {% endfor %}
-        </span>
+        </span> -->
         <span>
           <i class="material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="Tags">label</i>
-          {% for tag in page.tags %}
-          {% capture test %}{{tag | slice: 0}}{% endcapture %}
-          {% capture testup %}{{tag | slice: 0 | upcase}}{% endcapture %}
-          <a href="{{site.baseurl}}/tags#{{tag | slugify}}{% if test == testup %}_cap{% endif %}" target="_blank">
-            <div class="chip">{{tag}}</div>
+          {% for tag in page.chapters %}
+          {% capture test %}{{chapter | slice: 0}}{% endcapture %}
+          {% capture testup %}{{chapter | slice: 0 | upcase}}{% endcapture %}
+          <a href="{{site.baseurl}}/chapters#{{chapter | slugify}}{% if test == testup %}_cap{% endif %}" target="_blank">
+            <div class="chip">{{chapter}}</div>
           </a>
           {% endfor %}
         </span>
