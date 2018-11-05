@@ -2344,7 +2344,7 @@ hr {
  */
 pre {
   overflow: auto;
-  white-space: pre-line;
+  white-space: pre-wrap;
 }
 
 /**
@@ -5666,7 +5666,7 @@ button.btn-floating {
   display: none;
   border-bottom: 1px solid #ddd;
   box-sizing: border-box;
-  padding: 0 32px;
+  padding: 6px 32px;
 }
 
 .side-nav .collapsible-body li a, .side-nav.fixed .collapsible-body li a {

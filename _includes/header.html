@@ -72,7 +72,7 @@
         <div class="divider"></div>
       </li>
 
-      {% for cat in site.categories %}
+      {% for cat in site.tags %}
       {% capture test %}{{cat[0] | slice: 0}}{% endcapture %}
       {% capture testup %}{{cat[0] | slice: 0 | upcase}}{% endcapture %}
       <li>
