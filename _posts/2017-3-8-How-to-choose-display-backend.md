@@ -2,7 +2,7 @@
 layout: post
 title: 怎么选择 Embedded Linux 的图形框架
 category: linux
-tag: Embedded 嵌入式
+tag: Embedded and Linux
 comments: 1
 ---
 

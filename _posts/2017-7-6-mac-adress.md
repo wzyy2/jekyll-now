@@ -2,7 +2,7 @@
 layout: post
 title: Burn Mac Address(Rockchip Linux)
 category: tips
-tag: Embedded 嵌入式
+tag: Embedded and Linux
 comments: 1
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title: Build a wayland desktop by yocto
 category: linux
-tag: Embedded 嵌入式
+tag: Embedded and Linux
 comments: 1
 ---
 

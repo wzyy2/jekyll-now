@@ -2,7 +2,7 @@
 layout: post
 title: Use OpenCV with Gstreamer
 category: media
-tag: Multimedia/Graphics 多媒体
+tag: Multimedia/Graphics/Camera
 comments: 1
 ---
 

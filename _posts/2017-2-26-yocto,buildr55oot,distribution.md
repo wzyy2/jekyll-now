@@ -2,7 +2,7 @@
 layout: post
 title: 嵌入式Linux的选择
 category: linux
-tag: Embedded 嵌入式
+tag: Embedded and Linux
 comments: 1
 ---
 
