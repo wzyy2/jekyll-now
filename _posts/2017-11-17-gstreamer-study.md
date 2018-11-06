@@ -2,7 +2,7 @@
 layout: post
 title: Gstreamer学习
 category: media
-tag: CN
+tag: Multimedia/Graphics 多媒体
 comments: 1
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title: 如何提交补丁给开源项目
 category: linux
-tag: CN
+tag: Kernek 内核
 comments: 1
 ---
 

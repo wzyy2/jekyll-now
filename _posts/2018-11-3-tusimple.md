@@ -2,7 +2,7 @@
 layout: post
 title: 转载：自动驾驶系统微服务化架构实践
 category: OS
-tag: Autonomous Drive System<br> 自动驾驶系统 
+tag: Autonomous Drive System 自动驾驶系统 
 comments: 1
 ---
 

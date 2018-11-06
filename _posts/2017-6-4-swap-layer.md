@@ -2,7 +2,7 @@
 layout: post
 title: Swap video layer(Rockchip Linux)
 category: tips
-tag: EN
+tag: Embedded 嵌入式
 comments: 1
 ---
 

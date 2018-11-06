@@ -2,7 +2,7 @@
 layout: post
 title: Remote Wake Up from Deep Sleep with USB
 category: tips
-tag: EN
+tag: Embedded 嵌入式
 comments: 1
 ---
 

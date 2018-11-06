@@ -2,7 +2,7 @@
 layout: post
 title: Show Boot Logo(Rockchip Linux)
 category: tips
-tag: EN
+tag: Embedded 嵌入式
 comments: 1
 ---
 

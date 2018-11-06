@@ -2,7 +2,7 @@
 layout: post
 title: ARM Midgard GPU
 category: linux
-tag: CN
+tag: Embedded 嵌入式
 comments: 1
 ---
 

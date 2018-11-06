@@ -2,7 +2,7 @@
 layout: post
 title: Yocto workflow 
 category: linux
-tag: CN
+tag: Embedded 嵌入式
 comments: 1
 ---
 
