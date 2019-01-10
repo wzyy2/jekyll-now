@@ -106,8 +106,3 @@ Ubuntu最主要的优势在于生态。
 但是，如下图，container内部要和GPU交互的话，可能还需要driver+containerd端的支持（也可能不需要?如果运行在privilege的模式下：
 ![](https://github.com/wzyy2/wzyy2.github.io/raw/master/images/dgx-docker-1024x970.png)
 
-# Continue
-
-* System OTA： 为Ubuntu实现系统固件OTA
-* OS Build system： 构建/发布基于Ubuntu系统的无人车固件
-* Safety + Realtime Robot Framework: 
