@@ -2,7 +2,7 @@
 layout: post
 title: 如何提交补丁给开源项目
 category: linux
-tag: Kernel
+tag: Linux Kernel
 comments: 1
 ---
 
