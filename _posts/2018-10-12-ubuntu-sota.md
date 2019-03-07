@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 在自动驾驶车上使用Ubuntu, Ubuntu for Autonomous Vehicle 
+title: 在自动驾驶车上使用Ubuntu
 category: OS
 tag: Autonomous Drive System
 comments: 1
