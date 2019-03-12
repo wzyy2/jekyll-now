@@ -47,14 +47,14 @@ https://book.douban.com/subject/27028215/
 ##### Baidu
 
 Apollo 2.0多传感器融合定位模块:  
-https://mp.weixin.qq.com/s/PFCCRBGWmaTQkeyOlG1qng
+[https://mp.weixin.qq.com/s/PFCCRBGWmaTQkeyOlG1qng](https://mp.weixin.qq.com/s/PFCCRBGWmaTQkeyOlG1qng)
 
 Apollo公开课--定位:  
-https://mp.weixin.qq.com/s/KJbm4wfsTLxT5LGR7GV_SA
+[https://mp.weixin.qq.com/s/KJbm4wfsTLxT5LGR7GV_SA](https://mp.weixin.qq.com/s/KJbm4wfsTLxT5LGR7GV_SA)
 
 
 ##### Google
-http://www.roboticsproceedings.org/rss03/p16.pdf
+[http://www.roboticsproceedings.org/rss03/p16.pdf](http://www.roboticsproceedings.org/rss03/p16.pdf)
 
 #### Others
 
@@ -78,7 +78,7 @@ http://www.roboticsproceedings.org/rss03/p16.pdf
 
 ##### << Reinforcement Learning:An Introduction >>
 
-https://book.douban.com/subject/2866455/
+[https://book.douban.com/subject/2866455/](https://book.douban.com/subject/2866455/)
 
 强化学习在规划/决策/控制几个方向上都有应用, 如果要理解相关的文章, 有必要了解一下强化学习.   
 其他机器学习有空直接看文章理解.  
@@ -92,16 +92,16 @@ https://book.douban.com/subject/2866455/
 ##### Baidu
 
 Apollo公开课--规划:  
-https://mp.weixin.qq.com/s/ZBHKDtnaEI9sVCfEfeeUlQ  
-https://mp.weixin.qq.com/s/1yA-kgS_rL4o9I4OWeI4-A  
+[https://mp.weixin.qq.com/s/ZBHKDtnaEI9sVCfEfeeUlQ](https://mp.weixin.qq.com/s/ZBHKDtnaEI9sVCfEfeeUlQ)  
+[https://mp.weixin.qq.com/s/1yA-kgS_rL4o9I4OWeI4-A](https://mp.weixin.qq.com/s/1yA-kgS_rL4o9I4OWeI4-A)  
 
 Apollo公开课--控制:  
-https://mp.weixin.qq.com/s/8hLVHuv635fyHRNftXJQ4w  
-https://mp.weixin.qq.com/s/AnWWnD3ScSW6GhrwRGpRDw  
+[https://mp.weixin.qq.com/s/8hLVHuv635fyHRNftXJQ4w](https://mp.weixin.qq.com/s/8hLVHuv635fyHRNftXJQ4w )  
+[https://mp.weixin.qq.com/s/AnWWnD3ScSW6GhrwRGpRDw](https://mp.weixin.qq.com/s/AnWWnD3ScSW6GhrwRGpRDw)  
 
 行为决策:  
-https://blog.csdn.net/adamshan/article/details/80633099  
-https://www.roboticschina.com/news/201705160936.html  
+[https://blog.csdn.net/adamshan/article/details/80633099](https://blog.csdn.net/adamshan/article/details/80633099)  
+[https://www.roboticschina.com/news/201705160936.html](https://www.roboticschina.com/news/201705160936.html)  
 
 #### Others
 
@@ -123,11 +123,11 @@ https://www.roboticschina.com/news/201705160936.html
 ##### Baidu
 
 Apollo公开课--感知:  
-https://mp.weixin.qq.com/s/BCNrsuoThJt031jCnbAjAA  
-https://mp.weixin.qq.com/s/FqW2X9LJZvNe9efllAYhTQ  
+[https://mp.weixin.qq.com/s/BCNrsuoThJt031jCnbAjAA](https://mp.weixin.qq.com/s/BCNrsuoThJt031jCnbAjAA)  
+[https://mp.weixin.qq.com/s/FqW2X9LJZvNe9efllAYhTQ](https://mp.weixin.qq.com/s/FqW2X9LJZvNe9efllAYhTQ)  
 
 Apollo公开课--预测:  
-https://mp.weixin.qq.com/s/6ro9y69h-6yHZ7MfodxUHQ  
+[https://mp.weixin.qq.com/s/6ro9y69h-6yHZ7MfodxUHQ](https://mp.weixin.qq.com/s/6ro9y69h-6yHZ7MfodxUHQ)  
 
 ### 其他
 
