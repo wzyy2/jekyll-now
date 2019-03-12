@@ -6,7 +6,7 @@ tag: Autonomous Drive System
 comments: 1
 ---
 
-下面是个人收集的了解整个无人驾驶部分的相关学习书籍.  
+下面是个人收集的了解整个无人驾驶部分的相关学习资料.  
 是假设你已经对无人驾驶系统有了大概的认识, 然后希望对各个模块有稍微细致的了解.  
 标准是"基础,简单,入门", 不求了解琐碎的工程实现和行业前沿, 只是用尽量短的时间通过建立相对基础的认知, 不至于看ppt的时候只能不明觉厉.
 
@@ -18,14 +18,14 @@ comments: 1
 
 ##### << 第一本无人驾驶技术书 >>
 
-https://book.douban.com/subject/27038410/
+[https://book.douban.com/subject/27038410/](https://book.douban.com/subject/27038410/)
 
 挺好的科普书, 你可以当成网上那一堆无人驾驶博客的替代品.  
 抽空当厕所读物一样看下去, 建立起整个无人驾驶系统技术架构的认知.
 
 ##### Apollo公开资料
 
-https://github.com/zhxt/apollo/wiki/Posts-From-Apollo_Developers
+[https://github.com/zhxt/apollo/wiki/Posts-From-Apollo_Developers](https://github.com/zhxt/apollo/wiki/Posts-From-Apollo_Developers)
 
 
 ### SLAM
@@ -37,7 +37,7 @@ https://github.com/zhxt/apollo/wiki/Posts-From-Apollo_Developers
 
 ##### << 视觉SLAM十四讲 >>
 
-https://book.douban.com/subject/27028215/
+[https://book.douban.com/subject/27028215/](https://book.douban.com/subject/27028215/)
 
 #### 文章
 
