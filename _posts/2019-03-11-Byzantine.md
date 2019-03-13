@@ -13,10 +13,10 @@ comments: 1
 
 ## 背景
 
-前几天无聊看文章, 搜到了这面这个ppt, [Fault-Tolerance in Avionics Systems](https://cs.unc.edu/~anderson/teach/comp790/papers/fault_tolerance_avionics.pdf).    
-这个ppt比较易懂的解释了航空系统中的容错机制, 看了感觉非常有意思.  
+前几天看了一个ppt, [Fault-Tolerance in Avionics Systems](https://cs.unc.edu/~anderson/teach/comp790/papers/fault_tolerance_avionics.pdf).    
+这个ppt比较易懂的解释了航空系统中的容错机制, 感觉很有意思.   
 
-之前也看过相关新闻, 像SpaceX, 是在火箭和飞船的控制上粗放的使用了n+个Linux x86电脑, 主要通过额外的容错机制来做到robust.   
+之前也看过相关新闻, 像SpaceX是在火箭和飞船的控制上粗放的使用了n+个Linux x86电脑, 主要通过额外的容错机制来做到robust.   
 所以就遐想一下, 如果将自动驾驶车辆按照航天器标准设计容错, 会是什么样子.  
 
 ### 介绍
@@ -220,11 +220,19 @@ Types:
 更多的场景下, 可能是因为自身系统设计上的limitation导致的安全风险.  
 
 因此这里需要再加入针对performance limitation的考虑.  
-当然重点不放在如何找到以及改善performance limitation, 这个是扩大到整体功能安全范畴了.  
+当然重点不放在如何找到以及改善performance limitation, 这个是扩大到整体系统安全范畴了.  
 **我们主要关注的是, 针对环境超出performance limitation后的容错处理.**  
 
 
 ### 相关案例
+
+#### Waymo
+
+![](http://blog.iotwrt.com/images/waymo.png)
+
+上面是Waymo Safety report里的Safety-Critical Systems描述.  
+看描述, 基本上是使用 Replication/Backup 处理Byzantine Faults.
+
 
 #### [Audi A8 zFAS](https://www.audi-technology-portal.de/en/electrics-electronics/driver-assistant-systems/audi-a8-central-driver-assistance-controller-zfas)
 
@@ -241,6 +249,7 @@ Types:
 
 
 **这里值得一提的是, [zFAS上各处理器之间的bus和middleware使用的TTTech的技术](https://www.tttech.com/press/tttech-and-infineon-to-speed-up-the-development-in-autonomous-driving/), 这也是一个很关键的安全设计.**
+
 
 
 #### [elektrobit]
