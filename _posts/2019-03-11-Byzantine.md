@@ -6,13 +6,12 @@ tag: Autonomous Drive System
 comments: 1
 ---
 
-<small>安全体系梳理:</small>
 ![](http://blog.iotwrt.com/images/safety.svg)
+<small>(纯属YY, 请勿参考......)  </small>
 
+<small>PS: [最近737-MAX事故了解下](https://baijiahao.baidu.com/s?id=1627695537914121317&wfr=spider&for=pc), 很贴合主题..... </small>
 
-<small>(纯属YY, 请勿参考......)  
-  PS: [最近737-MAX事故了解下](https://baijiahao.baidu.com/s?id=1627695537914121317&wfr=spider&for=pc), 很贴合主题..... </small>
-
+## 背景
 
 前几天无聊看文章, 搜到了这面这个ppt, [Fault-Tolerance in Avionics Systems](https://cs.unc.edu/~anderson/teach/comp790/papers/fault_tolerance_avionics.pdf).    
 这个ppt比较易懂的解释了航空系统中的容错机制, 看了感觉非常有意思.  
@@ -20,8 +19,6 @@ comments: 1
 之前也看过相关新闻, 像SpaceX, 是在火箭和飞船的控制上粗放的使用了n+个Linux x86电脑, 主要通过额外的容错机制来做到robust.   
 所以就遐想一下, 如果将自动驾驶车辆按照航天器标准设计容错, 会是什么样子.  
 
-
-## 背景
 
 ### [Byzantine Faults(拜占庭将军问题)](https://baike.baidu.com/item/%E6%8B%9C%E5%8D%A0%E5%BA%AD%E5%B0%86%E5%86%9B%E9%97%AE%E9%A2%98/265656?fr=aladdin).  
 
