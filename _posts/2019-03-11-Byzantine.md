@@ -6,10 +6,13 @@ tag: Autonomous Drive System
 comments: 1
 ---
 
+<small>安全体系梳理:</small>
+![](http://blog.iotwrt.com/images/safety.svg)
+
+
 <small>(纯属YY, 请勿参考......)  
   PS: [最近737-MAX事故了解下](https://baijiahao.baidu.com/s?id=1627695537914121317&wfr=spider&for=pc), 很贴合主题..... </small>
 
-![](http://blog.iotwrt.com/images/safety.svg)
 
 前几天无聊看文章, 搜到了这面这个ppt, [Fault-Tolerance in Avionics Systems](https://cs.unc.edu/~anderson/teach/comp790/papers/fault_tolerance_avionics.pdf).    
 这个ppt比较易懂的解释了航空系统中的容错机制, 看了感觉非常有意思.  
