@@ -44,17 +44,11 @@ comments: 1
 就基础知识而言, 看完视觉SLAM那本书就差不多了.  
 其他的东西都是融会贯通的工程问题, 那就随便找点科普的Paper看看.
 
-##### Baidu
-
 Apollo 2.0多传感器融合定位模块:  
 [https://mp.weixin.qq.com/s/PFCCRBGWmaTQkeyOlG1qng](https://mp.weixin.qq.com/s/PFCCRBGWmaTQkeyOlG1qng)
 
 Apollo公开课--定位:  
 [https://mp.weixin.qq.com/s/KJbm4wfsTLxT5LGR7GV_SA](https://mp.weixin.qq.com/s/KJbm4wfsTLxT5LGR7GV_SA)
-
-
-##### Google
-[http://www.roboticsproceedings.org/rss03/p16.pdf](http://www.roboticsproceedings.org/rss03/p16.pdf)
 
 #### Others
 
@@ -63,7 +57,7 @@ Apollo公开课--定位:
 定位/建图这块涉及知识比较杂，深入的过程其实是一个追求广度和工程实现的过程, 都是engineering trick.  
 所以做了解即可.  
 
-### 规划/决策/控制:
+### 规划/决策/控制
 
 <!-- 行为决策/动态规划/控制  
 强化学习   -->
@@ -88,8 +82,6 @@ Apollo公开课--定位:
 
 <!-- 运动规划有比较多的知识点.   -->
 控制的话, 可以直接Google一下LQR/MPC来理解, 系统的控制理论不必做了解.  
-
-##### Baidu
 
 Apollo公开课--规划:  
 [https://mp.weixin.qq.com/s/ZBHKDtnaEI9sVCfEfeeUlQ](https://mp.weixin.qq.com/s/ZBHKDtnaEI9sVCfEfeeUlQ)  
@@ -117,10 +109,7 @@ Apollo公开课--控制:
 
 了解完deep learning就够了......
 
-
 #### 文章
-
-##### Baidu
 
 Apollo公开课--感知:  
 [https://mp.weixin.qq.com/s/BCNrsuoThJt031jCnbAjAA](https://mp.weixin.qq.com/s/BCNrsuoThJt031jCnbAjAA)  
