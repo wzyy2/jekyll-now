@@ -16,7 +16,7 @@ comments: 1
 
 如果对无人驾驶系统还没有认知, 那推荐:
 
-##### 1.1. << 第一本无人驾驶技术书 >>
+##### << 第一本无人驾驶技术书 >>
 
 [https://book.douban.com/subject/27038410/](https://book.douban.com/subject/27038410/)
 
@@ -35,7 +35,7 @@ comments: 1
 
 #### 2.1. 书
 
-##### 2.1.1. << 视觉SLAM十四讲 >>
+##### << 视觉SLAM十四讲 >>
 
 [https://book.douban.com/subject/27028215/](https://book.douban.com/subject/27028215/)
 
