@@ -18,7 +18,7 @@ comments: 1
 
 但是，除开一些比较专业的客户，会去选择Yocto以外，基本不吃我这套忽悠，Ubuntu/Debian发行版选择的比例更大。
 
-# Disadvantages
+# 1. Disadvantages
 
 看下面这个Ubuntu为了推销Ubuntu Core所画的图会更加直观
 ![](https://github.com/wzyy2/wzyy2.github.io/raw/master/images/ubuntu.png)
@@ -32,7 +32,7 @@ comments: 1
     * 系统只有一份实例，不能在运行时升级自己
 * 应用软件默认没有权限控制/隔离
 
-# Advantages
+# 2. Advantages
 
 
 这么多区县级独角兽客户喜欢选择Ubuntu，肯定还是有原因的。
@@ -57,7 +57,7 @@ Ubuntu最主要的优势在于生态。
 
 ![](https://github.com/wzyy2/wzyy2.github.io/raw/master/images/overlay.png)
 
-# Summary
+# 3. Summary
 
 |  缺点 |  |
 | ------ | ------ |
@@ -75,9 +75,9 @@ Ubuntu最主要的优势在于生态。
 | 环境一致 | 开发环境和生产环境的一致性可以带来很大便利， 不然像以前所对接的客户都有专门的所谓rootfs工程师（类似运维？ |
 
 
-# 其他
+# 4. 其他
 
-## Classic Linux Distribution
+## 4.1. Classic Linux Distribution
 
 现在SBC(Single Board System)越来越流行，比如说Raspberry PI。
 基于SBC，有大量开源的小伙伴们都在尝试classic发行版在这些平台的应用
@@ -90,7 +90,7 @@ Ubuntu最主要的优势在于生态。
 但在storage越来越便宜的未来，还是有很大的空间的。
 
 
-## Container-like OS
+## 4.2. Container-like OS
 
 对于现在的系统而言，实现层级的方式也有很多，除开像Android/ChromeOS这种从libc开始重写的，目前linux上比较流行的是更换package manager，采用containerize application/system的方式实现层级, 比如说rpm-ostree,flatpak,snap。
 

@@ -9,19 +9,19 @@ comments: 1
 接触Gstreamer有一段时间了，但一直没有系统的了解过Gstreamer的结构，只是停留在”打补丁“这样的一种开发思维上。
 虽然不是很喜欢gobject的风格，但毕竟开发不能总是没有头绪，还是需要系统的了解一下。
 
-# gobject
+# 1. gobject
 
 gstreamer是基于gobject开发的一个库，所以学习gstreamer前，需要先了解下gobject相关的基础。
 
-## 中文 ： https://www.ibm.com/developerworks/cn/linux/l-gobject/
+## 1.1. 中文 ： https://www.ibm.com/developerworks/cn/linux/l-gobject/
 
 一开始，可以先简单的看看这篇中文文章，对gobject有一个基础的认识。
 
-## 英文 ： https://developer.gnome.org/gobject/stable/
+## 1.2. 英文 ： https://developer.gnome.org/gobject/stable/
 
 在后面的学习过程中，如果有遇到不理解，可以再回来check官方的manual
 
-# What is Gstreamer
+# 2. What is Gstreamer
 
 ![](https://gstreamer.freedesktop.org/documentation/application-development/introduction/images/gstreamer-overview.png)
 
@@ -34,40 +34,40 @@ https://gstreamer.freedesktop.org/documentation/application-development/introduc
 
 Foundations里解释了一些在使用gstreamer的时候会遇到的名词，比如什么是elements，什么是pads。
 
-# Application
+# 3. Application
 
 https://gstreamer.freedesktop.org/documentation/application-development/basics/index.html
 
 过一遍即可，不过如果还没用过gstreamer的话，最好先用gst-launch多输几条命令玩玩先。
 这里主要是进一步了解什么是elements, bins, pads, buffer以及你该如何在应用中使用。
 
-## Player
+## 3.1. Player
 
 如果你是要做一个player，同时又是要直接使用gstreamer的话，看这里：  
 https://gstreamer.freedesktop.org/documentation/application-development/highlevel/index.html
 
 使用playbin和decodebin来简化程序。
 
-## Advance
+## 3.2. Advance
 
 https://gstreamer.freedesktop.org/documentation/application-development/advanced/index.html
 
-# Plugin
+# 4. Plugin
 
 https://gstreamer.freedesktop.org/documentation/plugin-development/index.html
 
-## Memory
+## 4.1. Memory
 
 https://gstreamer.freedesktop.org/documentation/plugin-development/advanced/allocation.html
 关于memory的部分可以多看看，有助于编写程序。
 
-# Others
+# 5. Others
 
 如果你的App不满足于media pipeline，你不会也不想写gstreamer plugin，那可以看看博客里的另一篇gstreamer+opencv，可以了解下如果使用appsink和appsrc，来达到类似ffmpeg输入输出的效果。
 
-## tips
+## 5.1. tips
 
-### 看playbin选了什么plugin
+### 5.1.1. 看playbin选了什么plugin
 
 ```
 export GST_DEBUG=decodebin:6

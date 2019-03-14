@@ -66,11 +66,11 @@ Apollo公开课--定位:
 
 这里实在是找不到中文入门书, 这些书就有兴趣翻翻吧.....
 
-##### 3.1.1. << Principles of Robot Motion: Theory, Algorithms, and Implementation >>
+##### << Principles of Robot Motion: Theory, Algorithms, and Implementation >>
 
 运动规划方向的经典著作
 
-##### 3.1.2. << Reinforcement Learning:An Introduction >>
+##### << Reinforcement Learning:An Introduction >>
 
 [https://book.douban.com/subject/2866455/](https://book.douban.com/subject/2866455/)
 
@@ -105,7 +105,7 @@ Apollo公开课--控制:
 
 #### 4.1. 书
 
-##### 4.1.1. << 深度学习(deep learning) >>
+##### << 深度学习(deep learning) >>
 
 了解完deep learning就够了......
 

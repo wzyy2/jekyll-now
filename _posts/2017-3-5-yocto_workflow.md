@@ -11,7 +11,7 @@ Yocto 还算一个蛮新的东西，可能很多人都不太熟悉。我最近�
 然后呢？我能用 yocto 干什么，我该怎么用 yocto 去做这些事情
 
 
-# 开发内核
+# 1. 开发内核
 
 当你执行过一次build之后，你可以在 `tmp/work-shared/<MACHINE_NAME>/kernel-source` 下面找到内核的代码，只要不执行 clean，这里的代码是一直存在的，可以放心的编辑。
 
@@ -24,14 +24,14 @@ Yocto 还算一个蛮新的东西，可能很多人都不太熟悉。我最近�
 	bitbake linux-rockchip -c menuconfig
 
 上面这步只是编译而已，下面还需要烧写内核的话，分两种场景。
-### 烧写完整镜像
+### 1.1. 烧写完整镜像
 
 这个时候你只要去 build 你需要的 image 就可以了，bitbake 会依次执行 kernel 的 deploy 和 image 的 generate，最终 deploy/images 目录下面生成的完整镜像会包含新编译的kernel。
 
 	bitbake IMAGE_NAME
 	# flash image here
 
-### 只烧写内核
+### 1.2. 只烧写内核
 在开发一些比较庞大的项目的时候，不可能说每次都烧写几个 Gb 大小的 image，这个时候就要单独烧写内核。  
 要注意 compile 步骤只是执行编译而已，编译完内的 binary 还呆在 work 目录下的 build dir 里的，所以你需要执行下面的命令：
 
@@ -40,7 +40,7 @@ Yocto 还算一个蛮新的东西，可能很多人都不太熟悉。我最近�
 执行完后 deploy/images 目录下面的 kenrel image 和 dtb 就会被更新，然后你才能通过 fastboot 或者 ums 一类的办法烧写至板子上。
 
 
-# 开发应用
+# 2. 开发应用
 
 目前修改应用我和修改kernel差不多用法，但是 yocto 的 document 里还介绍了一些工具，如 devtool，Quilt，等待研究。  
 不同于内核，应用和bootloader的代码都在tmp/work目录下面，根据recipes的不同，分布不同。  
@@ -62,13 +62,13 @@ scp chen@192.168.10.237:/home/chen/workbench/rk-community-bsp/xwayland/tmp/work/
 其实可以用devtool的，看这里
 https://www.yoctoproject.org/docs/1.8/dev-manual/dev-manual.html#devtool-modifying-a-recipe
 
-# 离线工作
+# 3. 离线工作
 
 默认用 yocto 有一个问题，就是必须要保证网络在连接状态。如果想离线工作，还需要做一些配置
 
 离线工作，分下面两个场景：
 
-### 场景一：
+### 3.1. 场景一：
 你有一个 source 是从内网服务器获取的，然后你离开了内网环境，或者 source 是 github 上的而你电脑断开了网络。  
 
 这种场景你执行 bitbake，大概率会发现 yocto 报 network unreachable。  
@@ -77,7 +77,7 @@ https://www.yoctoproject.org/docs/1.8/dev-manual/dev-manual.html#devtool-modifyi
 
 	SRCREV = "75dc14fa97df26fbb0638ccd547a01ee1632bad6"
 
-### 场景二：
+### 3.2. 场景二：
 一个东西到了产品化阶段，我们想固定下所有的代码。
 
 这个可以通过设置本地的 mirror 来完成，具体参考下面的网络资料。
@@ -88,7 +88,7 @@ https://www.yoctoproject.org/docs/1.8/dev-manual/dev-manual.html#devtool-modifyi
 注意这个场景也不能使用 SRCREV = "${AUTOREV}”，需要有固定的代码位置。根据网络的资料，可以通过 buildhistory-collect-srcrevs 来帮助获取当前的rev，但我也没用过，有兴趣的可以在自己 google 下。
 
 
-# Debug
+# 4. Debug
 
 默认编出来的 yocto image 不包含任何的 debug symbol 和 debug 工具，不是很方便开发。不过想要安装这些工具，也非常容易。
 
@@ -100,11 +100,11 @@ https://www.yoctoproject.org/docs/1.8/dev-manual/dev-manual.html#devtool-modifyi
 [“Image Features”](http://www.yoctoproject.org/docs/2.3/ref-manual/ref-manual.html#ref-features-image)
 
 
-# Others
+# 5. Others
 
 Yocto 的开发，他的文档已经很全了，不需要多写什么，下面就提炼一点小tips，节约获取信息的时间。
 
-### 指定任务
+### 5.1. 指定任务
 bitbake 可以指定只运行一个任务，比如
 
 	bitbake linux -c compile
@@ -112,26 +112,26 @@ bitbake 可以指定只运行一个任务，比如
 他就只会执行compile命令。这里要注意如果不加 -f 的话，命令有检查完 stamp 之后就直接 skip了。  
 常见的一些操作有，fetch， unpack， configure， compile， install， deploy等等，对应的是更新download，更新workdir下的source，配置参数，编译，安装，打包这些步骤。
 
-### 覆盖文件
+### 5.2. 覆盖文件
 覆盖文件有两种，一种是通过 bappend 来修改提供这个文件的包，这种修改比较适合 bsp 包，有普遍性的修改。第二种就是通过  update-alternatives 来设定不同包的优先级，优先级最高的文件会覆盖进去。
 
-### 打印变量
+### 5.3. 打印变量
 
 Yocto 里有很多什么 IMAGE_FEATURES 啊 DISTRO_FEATURES 啊， 因为很多层文件都有修改这些变量，所以有时候会不确定这些变量具体的值。
 之前找的资料显示可以用 bitbake -e， 但是这个不是很好用。  
 其实可以在 do_install 加一句 echo， 输出这个变量，bitbake 加 -v 就可以看到echo的内容了，比 -e 要容易看懂一点。
 
-### clean
+### 5.4. clean
 
 执行 clean 会把 workdir 里的东西都删掉，执行 cleanstate 会多一个 shared cache，执行 cleanall 还会把 download 删掉。
 
-### 更新代码
+### 5.5. 更新代码
 
 暂时这样更新代码
 
 	bitbake linux-rockchip -c clean && bitbake linux-rockchip
 
-### 查看镜像里安装的包
+### 5.6. 查看镜像里安装的包
 
 Yocto 有一套乱七八糟的包依赖管理，所以到后面我们会不确定自己的镜像上到底装了些什么东西，这个时候就需要一些命令去把信息打印出来。
 
@@ -140,7 +140,7 @@ Yocto 有一套乱七八糟的包依赖管理，所以到后面我们会不确�
 执行完这个命令就可以得到3个文件，分别记录了各个级别的依赖和版本关系。
 
 
-### 集成服务器
+### 5.7. 集成服务器
 
 Yotco 有一个构建服务器叫 toaster， 等待研究。
 
@@ -149,7 +149,7 @@ toaster看起来并不是我想象中的CI服务器，应该来说只是一个bu
 只能简单的用toaster来承担CI服务器的效果了，可以对接上测试服务器测试当前的代码，另外还可以用apache把build完后的image暴露出来，对内提供固件。
 
 
-# 参考资料
+# 6. 参考资料
 
 [“Bitbake”](http://www.yoctoproject.org/docs/2.3/bitbake-user-manual/bitbake-user-manual.html )  
 [“Dev”](http://www.yoctoproject.org/docs/2.3/dev-manual/dev-manual.html )  
