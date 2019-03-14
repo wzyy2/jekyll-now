@@ -263,9 +263,18 @@ automated driving](http://on-demand.gputechconf.com/gtc-eu/2017/presentation/232
 
 ### 3.1. 思路
 
-* 列出可能的Byzantine Faults 和 Common Mode Faults
+按照功能安全的分析方法, 我们的思路应该是:
+* 项目定义
+* 危险分析和风险评估
+* 功能安全概念设计
+* 系统开发
+* 安全确认
+
+我们就随意点, 按照如下的思路来:  
+* 列出可能的 Byzantine Faults 和 Common Mode Faults
 * 找合适解决方案
-* 输出架构图
+* 输出系统结构
+
 
 #### 3.1.1. 不同点
 
@@ -277,4 +286,86 @@ automated driving](http://on-demand.gputechconf.com/gtc-eu/2017/presentation/232
 当然重点不放在如何找到以及改善performance limitation, 这个是扩大到整体系统安全范畴了.  
 **我们主要关注的是, 针对环境超出performance limitation后的容错处理.**  
 
-### 3.2. Byzantine Faults
+### 3.2. Faults
+
+底盘域相关故障暂不考虑, 假设已经是严格符合安全标准.  
+
+<!-- Byzantine Faults
+Common Mode Faults -->
+
+硬件:
+* 电源故障
+* 总线(CAN/ETH)故障
+* 传感器故障
+* 计算平台故障
+    * 元器件故障
+    * 粒子翻转
+* 移动网络故障
+* ......
+
+
+按模块分的软件故障(以apollo为例):
+* Sensor software Faults
+* Planning Faults
+* Perception Faults
+* Localization Faults
+* Map Faults
+* Control Faults
+* System software Faults
+
+模块是有上下游的, 因此对于下游的模块, 更需要注意.
+
+![](http://blog.iotwrt.com/images/apollo.png)
+
+软件故障会引起的现象:
+* 进入循环
+* 挂起
+* 崩溃
+* 性能下降
+* 结果不正确
+
+#### 3.2.1. Performance Limitation
+
+下面是我现在可以想像到的Performance Limitation:
+<!-- * 传感器 -> 感知/预测 -> 决策 -> 规划 -> 控制 -> 硬件
+* 传感器 -> 感知/预测 -> 防撞决策 -> 控制 -> 硬件
+* 传感器 -> 防撞决策 -> 控制 -> 硬件
+* 监控 -> 控制 -> 硬件 -->
+* 整体能力的限制, 程序无法处理当前环境(狭窄路况, 恶劣天气)
+* 感知的局限性, 范围内未识别出障碍物
+* 行为决策的不确定性, 做出错误的驾驶决策
+* 链路响应延迟, 障碍物出现在安全距离内(盲区突然出现的行人)
+
+
+### 3.3. 解决方法
+
+对于硬件问题, 基本可以通过增加成本, 通过冗余变成Byzantine Faults. 
+
+对于软件问题, 同理.    
+不过有相当部分会是Common Mode Faults, 因此还需要增加Diversity或者使用其他runtime措施.
+
+### 3.4. 结构
+
+
+#### 3.4.1. 系统
+
+![](http://blog.iotwrt.com/images/system.svg)
+
+
+#### 3.4.2. 硬件容器
+
+![](http://blog.iotwrt.com/images/system2.svg)
+
+电源上的冗余是底盘平台设计要综合考虑的事情, 所以这里
+
+
+#### 3.4.3. 软件组件
+
+
+### 3.5. 其他
+
+上述都是YY.  
+
+加入的这些结构会增加成本, 增加复杂度, 影响驾驶效率等等.  
+最终还是要靠合理的论证和测试, 确定如何平衡安全与成本与效率.  
+
