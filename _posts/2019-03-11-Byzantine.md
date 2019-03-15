@@ -6,8 +6,8 @@ tag: Autonomous Drive System
 comments: 1
 ---
 
-![](http://blog.iotwrt.com/images/safety.svg)
 <small>(YY, 请勿参考)  </small>
+![](http://blog.iotwrt.com/images/safety.svg)
 
 
 
@@ -261,7 +261,7 @@ automated driving](http://on-demand.gputechconf.com/gtc-eu/2017/presentation/232
 * 系统开发
 * 安全确认
 
-我们就随意点, 按照如下的思路来:  
+这里就随意点, 按照如下的思路来:  
 * 列出可能的 Byzantine Faults 和 Common Mode Faults
 * 找合适解决方案
 * 输出系统结构
@@ -269,17 +269,13 @@ automated driving](http://on-demand.gputechconf.com/gtc-eu/2017/presentation/232
 
 #### 3.1.1. 不同点
 
-对航空器设计来说, 其所关注的是针对由于软硬件系统"故障失效"而导致的安全风险.  
-但对运行着自动驾驶软件的无人车来说, 安全问题并不一定仅仅由于系统"故障失效"引起.  
-更多的场景下, 可能是因为自身系统设计上的limitation导致的安全风险.  
+对航空器设计来说, 其所关注的是针对由于软硬件系统"故障失效"而导致的安全风险.但对运行着自动驾驶软件的无人车来说, 安全问题并不一定仅仅由于系统"故障失效"引起.更多的场景下, 可能是因为自身系统设计上的limitation导致的安全风险.  
 
-因此这里需要再加入针对performance limitation的考虑.  
-当然重点不放在如何找到以及改善performance limitation, 这个是扩大到整体系统安全范畴了.  
-**我们主要关注的是, 针对环境超出performance limitation后的容错处理.**  
+因此这里需要再加入针对performance limitation的考虑.当然重点不放在如何找到以及改善performance limitation, 这个是扩大到整体系统安全范畴了. 我们主要关注的是, 针对环境超出performance limitation后的容错处理. 
 
 ### 3.2. Faults
 
-底盘域相关故障暂不考虑, 假设已经是严格符合安全标准.  
+底盘域不考虑, 假设已符合标准.  
 
 <!-- Byzantine Faults
 Common Mode Faults -->
@@ -315,7 +311,7 @@ Common Mode Faults -->
 * 性能下降
 * 结果不正确
 
-#### 3.2.1. Performance Limitation
+### 3.3. Performance Limitation
 
 下面是我现在可以想像到的Performance Limitation:
 
@@ -331,32 +327,21 @@ Common Mode Faults -->
 * 响应延迟, 障碍物出现在安全距离内(突然出现的行人)
 
 
-### 3.3. 解决方法
+### 3.4. 解决方法
 <!-- 
 对于硬件问题, 基本可以增加成本, 通过冗余的机制解决.   
 对于软件问题, 冗余也多半成立.    
 不过有相当部分软件问题是Common Mode Faults, 因此还需要增加Diversity或者使用其他runtime措施.
 
 总结来说, 就是几个方法: -->
-
+解决手段:  
 * 多样
 * 冗余
 * 监控
 
-### 3.4. 结构
+严谨的流程中, 使用何种解决手段, 使用到什么程度, 是根据失效概率和安全等级来决定的. 不过作为单纯的YY, 不可能做到这种程度, 因此这里只简单使用下列规则.
 
-
-#### 3.4.1. 系统
-
-![](http://blog.iotwrt.com/images/system.svg)
-
-
-#### 3.4.2. 硬件容器
-
-![](http://blog.iotwrt.com/images/system2.svg)
-
-这里先理清楚一下我选择双重冗余与三重冗余与多样化冗余的规则.
-
+选择双重冗余与三重冗余与多样化冗余的规则.
 * 如果一个模块, 在其出错的时候, 基本都能检测出来(error detection), 那就使用双重冗余.  
 * 如果模块的错误有很大的概率无法被检测, 则使用三重冗余.  
 * 如果不同类型的模块可以互补替代, 则优先使用多样化冗余.
@@ -364,7 +349,20 @@ Common Mode Faults -->
 再增加一个不使用冗余的规则.
 * 出错可以被检测, 同时短期内不会对驾驶造成影响.
 
-##### 3.4.2.1. 电源
+
+### 3.5. 结构
+
+
+#### 3.5.1. 系统
+
+![](http://blog.iotwrt.com/images/system.svg)
+
+
+#### 3.5.2. 硬件容器
+
+![](http://blog.iotwrt.com/images/system2.svg)
+
+##### 3.5.2.1. 电源
 
 电源上的冗余是底盘平台设计要综合考虑的事情, 所以图中就不再画出.  
 假设底盘已经有12v主电源, 12v备用电池的概念, 支撑传感器域和计算域的电源.
@@ -372,7 +370,7 @@ Common Mode Faults -->
 对计算平台的部分来说, 其电压容限比较小, 最常见的共因失效就是电源.  
 因此对计算平台ABC来说, 必须板载独立的[PMIC或者电源隔离](https://www.maximintegrated.com/content/dam/files/design/technical-documents/white-papers/Balancing-Power-Supply-Requirements-in-ADAS-Applications-cn.pdf), 同时可以在板级采用不同的设计来增加多样性.
 
-##### 3.4.2.2. 总线
+##### 3.5.2.2. 总线
 
 图上没有解释总线的设计.  
 这是因为总线有很多成熟的技术方案, 可靠性也比较好, 都会有信息冗余/硬件冗余的支持.  
@@ -383,7 +381,7 @@ Common Mode Faults -->
 现有车载以太网方案里很多都是针对娱乐/ADAS系统设计的, 可能不太合适无人车.  
 针对自动驾驶设计的, 可以看[Time-Triggered Ethernet](https://www.tttech.com/technologies/time-triggered-ethernet/).
 
-##### 3.4.2.3. 传感器
+##### 3.5.2.3. 传感器
 
 imu:  
 imu失效会快速导致无人车定位的误差, 引起重大的安全风险, 所以必须采用硬件冗余.  
@@ -400,25 +398,25 @@ GPS和时间同步等并不影响短期内的驾驶行为, 出错后车辆可以
 不过如果GPS出错的几率会比较大, 影响到无人车运行效率, 则需要添加冗余.
 
 
-##### 3.4.2.4. 计算平台
+##### 3.5.2.4. 计算平台
 
 
-##### 3.4.2.5. 车联网
+##### 3.5.2.5. 车联网
 
 网络的风险主要在于空口问题引起的延迟/断网, 因此采用不同网络并存.  
 网络虽然不是自动驾驶所必须的部分, 但是出于监控的需要, 硬件上也有必要使用双冗余.
 
 
-#### 3.4.3. 软件组件
+#### 3.5.3. 软件组件
 
 
 
-### 3.5. 故障率分析
+### 3.6. 故障率分析
 
 
 ......
 
-### 3.6. 其他
+### 3.7. 其他
 
 加入的这些结构会增加成本, 增加复杂度, 影响驾驶效率等等.  
 最终还是要靠合理的论证和测试, 确定如何平衡安全与成本与效率.  
