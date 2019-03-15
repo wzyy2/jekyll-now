@@ -228,7 +228,7 @@ safe and secure connected vehicles](https://www.safeware-engineering.org/site/as
 ![](http://blog.iotwrt.com/images/Elektrobit2.png)
 
 这个文档里不是讲自动驾驶的, 主要是汽车ECU相关的safety architecture.  
-大致也可以看到相关思路也是符合我们上述理论的.  
+大致也可以看到相关思路也是符合上述理论的.  
 
 
 [Designing a software framework for
@@ -254,7 +254,7 @@ automated driving](http://on-demand.gputechconf.com/gtc-eu/2017/presentation/232
 
 ### 3.1. 思路
 
-按照功能安全的分析方法, 我们的思路应该是:
+按照功能安全的分析方法, 思路应该是:
 * 项目定义
 * 危险分析和风险评估
 * 功能安全概念设计
@@ -271,7 +271,7 @@ automated driving](http://on-demand.gputechconf.com/gtc-eu/2017/presentation/232
 
 对航空器设计来说, 其所关注的是针对由于软硬件系统"故障失效"而导致的安全风险.但对运行着自动驾驶软件的无人车来说, 安全问题并不一定仅仅由于系统"故障失效"引起.更多的场景下, 可能是因为自身系统设计上的limitation导致的安全风险.  
 
-因此这里需要再加入针对performance limitation的考虑.当然重点不放在如何找到以及改善performance limitation, 这个是扩大到整体系统安全范畴了. 我们主要关注的是, 针对环境超出performance limitation后的容错处理. 
+因此这里需要再加入针对performance limitation的考虑.当然重点不放在如何找到以及改善performance limitation, 这个是扩大到整体系统安全范畴了. 主要关注的是, 针对环境超出performance limitation后的容错处理. 
 
 ### 3.2. Faults
 
@@ -396,7 +396,19 @@ GPS和时间同步等并不影响短期内的驾驶行为, 出错后车辆可以
 如果GPS失效几率会比较大, 影响到无人车运行效率, 则再考虑添加冗余.
 
 
-##### 3.5.2.4. 计算平台
+##### 3.5.2.4. 计算系统
+
+备份安全平台:  
+物理隔离的备份安全平台, 在百度apollo和waymo的相关透露信息中都有提到.备份安全平台在硬件设计上主要是能采用更可靠的硬件/驱动程序, 使用已经被广泛验证的平台和技术, 不像计算单元那样受限制于计算能力. 如此, 为整体带来Design Diversity. 
+
+计算平台:  
+按经验来说, 计算平台硬件出现失效的概率应该是不大的, 做双冗余即可. 或者不做冗余关系也不大, 如果有备份安全平台的存在.  
+此处做三冗余, 主要出于软件上的考虑(下段解释).  
+
+Control ECUs:
+以百度apollo为例, 其Trajectory Control, Longitudinal/Lateral Control是直接在计算平台内做的.此处分到ECU上, 主要是看所有车厂放出的架构里, Control都是在ECU上做的, 比如说[BMW](https://roscon.ros.org/2015/presentations/ROSCon-Automated-Driving.pdf).
+当然他们这么做, 多半是为了直接复用ADAS上自适应巡航, 自动泊车的模块.  
+我们这里这样选择, 主要是出于Diversity, 成熟设计稳定性, share ability的原故. 
 
 
 ##### 3.5.2.5. 车联网
@@ -406,13 +418,22 @@ GPS和时间同步等并不影响短期内的驾驶行为, 出错后车辆可以
 
 
 #### 3.5.3. 软件组件
+<!-- 
+, 大概猜测, 其主要功能可能有:
+* 监控/巡视
+* 靠边停车的能力
+* 熔断安全(防撞)
+
+除了这些, 备份安全平台还有非常多的想象能力, 只要符合"可靠"这样特点的功能, 都可以引入. -->
 
 
+![](http://blog.iotwrt.com/images/system3.svg)
 
-### 3.6. 故障率分析
+### 3.6. 分析设计
 
+对上述设计基于失效概率/安全等级进行分析    
+省略......
 
-......
 
 ### 3.7. 其他
 
