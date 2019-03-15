@@ -403,7 +403,7 @@ GPS和时间同步等并不影响短期内的驾驶行为, 出错后车辆可以
 
 计算平台:  
 按经验来说, 计算平台硬件出现失效的概率应该是不大的, 做双冗余即可. 或者不做冗余关系也不大, 如果有备份安全平台的存在.  
-此处做三冗余, 主要出于软件上的考虑(下段解释).  
+此处做三冗余, 主要出于软件上的考虑.  
 
 Control ECUs:
 以百度apollo为例, 其Trajectory Control, Longitudinal/Lateral Control是直接在计算平台内做的.此处分到ECU上, 主要是看所有车厂放出的架构里, Control都是在ECU上做的, 比如说[BMW](https://roscon.ros.org/2015/presentations/ROSCon-Automated-Driving.pdf).
@@ -426,8 +426,26 @@ Control ECUs:
 
 除了这些, 备份安全平台还有非常多的想象能力, 只要符合"可靠"这样特点的功能, 都可以引入. -->
 
+<!-- 突然想到, 如果有足够强的虚拟化机制 -->
 
 ![](http://blog.iotwrt.com/images/system3.svg)
+
+Control ECUs:  
+都是成熟设计, 省略......
+
+计算平台:  
+采用三冗余的设计, 从容错的角度上讲.
+* 解决因为程序异常, 包括崩溃/挂起/循环/性能下降, 引起的Byzantine Faults
+* 可以布置多样性的算法策略, 从design上减少共因失效. 
+
+从软件角度上讲, 更多的算力和融合能力可以改善算法的Performance Limitation.
+
+基于决策和路径规划来做Vote的实现, 可以看看这篇文章.
+
+备份安全平台:
+
+
+关于熔断安全,
 
 ### 3.6. 分析设计
 
