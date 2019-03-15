@@ -7,17 +7,18 @@ comments: 1
 ---
 
 ![](http://blog.iotwrt.com/images/safety.svg)
-<small>(纯属YY, 请勿参考......)  </small>
+<small>(YY, 请勿参考)  </small>
 
-<small>PS: [最近737-MAX事故了解下](https://baijiahao.baidu.com/s?id=1627695537914121317&wfr=spider&for=pc), 很贴合主题..... </small>
+
 
 ## 1. 背景
 
-前几天看了一个ppt, [Fault-Tolerance in Avionics Systems](https://cs.unc.edu/~anderson/teach/comp790/papers/fault_tolerance_avionics.pdf).    
-这个ppt比较易懂的解释了航空系统中的容错机制, 感觉很有意思.   
+最近看了一个ppt, [Fault-Tolerance in Avionics Systems](https://cs.unc.edu/~anderson/teach/comp790/papers/fault_tolerance_avionics.pdf).    
+ppt比较易懂的解释了航空系统中的容错机制, 感觉有些意思.   
+之前也看过相关片段, 像SpaceX是在火箭和飞船的控制上粗放的使用了n+个Linux x86电脑, 主要通过额外的容错机制来做到robust.   
+这里也跟着遐想, 如何将自动驾驶车辆按照航天器标准设计.
 
-之前也看过相关新闻, 像SpaceX是在火箭和飞船的控制上粗放的使用了n+个Linux x86电脑, 主要通过额外的容错机制来做到robust.   
-所以就遐想一下, 如果将自动驾驶车辆按照航天器标准设计容错, 会是什么样子.  
+下面是对ppt的截取.
 
 ### 1.1. 介绍
 
@@ -30,8 +31,6 @@ comments: 1
 
 
 ### 1.2. [Byzantine Faults(拜占庭将军问题)](https://baike.baidu.com/item/%E6%8B%9C%E5%8D%A0%E5%BA%AD%E5%B0%86%E5%86%9B%E9%97%AE%E9%A2%98/265656?fr=aladdin).
-
-直接看链接里的解释把, 就不翻译ppt了.
 
 #### 1.2.1. Fault Containment Region
 
@@ -220,7 +219,6 @@ Types:
 上面是Waymo Safety report里的Safety-Critical Systems描述.  
 
 备用运算, 备用制动, 备用转向, 备用电源, 备用碰撞, 冗余惯性测量.  
-基本上就是是使用 Replication/Backup 处理 Byzantine Faults.
 
 ### 2.2. Elektrobit
 
@@ -230,7 +228,7 @@ safe and secure connected vehicles](https://www.safeware-engineering.org/site/as
 ![](http://blog.iotwrt.com/images/Elektrobit2.png)
 
 这个文档里不是讲自动驾驶的, 主要是汽车ECU相关的safety architecture.  
-大致也可以看到相关思路也是Triple Modular Redundancy/Voting/Replication.  
+大致也可以看到相关思路也是符合我们上述理论的.  
 
 
 [Designing a software framework for
@@ -240,10 +238,7 @@ automated driving](http://on-demand.gputechconf.com/gtc-eu/2017/presentation/232
 
     zFAS有4个核心元件, 包括Mobileye的EyeQ3, 负责交通信号识别, 行人检测, 碰撞报警, 光线探测和车道线识别.英伟达的K1负责驾驶员状态检测, 360度全景.英特尔（Altera）的Cyclone V负责目标识别融合, 地图融合, 自动泊车, 预刹车, 激光雷达传感器数据处理.英飞凌的Aurix TC297T负责监测系统运行状态, 使整个系统达到ASIL-D的标准, 同时还负责矩阵大灯
 
-具体这里的Aurix TC297T上面的处理逻辑, 我们不得而知了, 只知道是safety management unit.  
-不过基本也逃不开上面所述描述的理论.
-
-![](https://edge.slashgear.com/wp-content/uploads/2017/09/03_vernetzung-zFAS-Aktuatoren-1018x720.jpg)
+<!-- ![](https://edge.slashgear.com/wp-content/uploads/2017/09/03_vernetzung-zFAS-Aktuatoren-1018x720.jpg) -->
 
 ![](https://edge.slashgear.com/wp-content/uploads/2017/09/Screen-Shot-2017-09-11-at-4.25.50-PM-1280x716.jpg)
 
@@ -362,11 +357,9 @@ Common Mode Faults -->
 
 这里先理清楚一下我选择双重冗余与三重冗余与多样化冗余的规则.
 
-    dual modular redundancy (DMR) is when components of a system are duplicated, providing redundancy in case one should fail.
-
 * 如果一个模块, 在其出错的时候, 基本都能检测出来(error detection), 那就使用双重冗余.  
 * 如果模块的错误有很大的概率无法被检测, 则使用三重冗余.  
-* 如果不同类型的模块可以信息互补, 则使用多样化冗余.
+* 如果不同类型的模块可以互补替代, 则优先使用多样化冗余.
 
 再增加一个不使用冗余的规则.
 * 出错可以被检测, 同时短期内不会对驾驶造成影响.
@@ -377,14 +370,51 @@ Common Mode Faults -->
 假设底盘已经有12v主电源, 12v备用电池的概念, 支撑传感器域和计算域的电源.
 
 对计算平台的部分来说, 其电压容限比较小, 最常见的共因失效就是电源.  
-因此对计算平台ABC来说, 必须板载独立的[电源隔离/PMIC](https://www.maximintegrated.com/content/dam/files/design/technical-documents/white-papers/Balancing-Power-Supply-Requirements-in-ADAS-Applications-cn.pdf), 甚至可以采用不同的设计来增加多样性.
+因此对计算平台ABC来说, 必须板载独立的[PMIC或者电源隔离](https://www.maximintegrated.com/content/dam/files/design/technical-documents/white-papers/Balancing-Power-Supply-Requirements-in-ADAS-Applications-cn.pdf), 同时可以在板级采用不同的设计来增加多样性.
 
-##### 3.4.2.2. 
+##### 3.4.2.2. 总线
+
+图上没有解释总线的设计.  
+这是因为总线有很多成熟的技术方案, 可靠性也比较好, 都会有信息冗余/硬件冗余的支持.  
+
+对无人车来说, 车载以太网是比较好的选择.  
+**PS: 不要用家用路由器/交换机上无人车!**  
+
+现有车载以太网方案里很多都是针对娱乐/ADAS系统设计的, 可能不太合适无人车.  
+针对自动驾驶设计的, 可以看[Time-Triggered Ethernet](https://www.tttech.com/technologies/time-triggered-ethernet/).
+
+##### 3.4.2.3. 传感器
+
+imu:  
+imu失效会快速导致无人车定位的误差, 引起重大的安全风险, 所以必须采用硬件冗余.  
+imu可以用confidence决定数据采用哪个, 因此采用双冗余的方式即可.  
+<small>[无人机IMU三冗余](https://www.itread01.com/content/1546191209.html)</small>
+
+雷达/摄像头:  
+障碍物识别相关的传感器以多样化互补为主, 这里的冗余能力主要取决于算法融合的效果.  
+不过除了障碍物识别, 一些边角的感知需求, 比如说红绿灯识别/信号灯识别/车道线识别, 是无法基于雷达的数据获取的, 
+有必要考虑在摄像头部分做硬件冗余.
+
+其他:  
+GPS和时间同步等并不影响短期内的驾驶行为, 出错后车辆可以完成自主停车操作, 因此不做备份.  
+不过如果GPS出错的几率会比较大, 影响到无人车运行效率, 则需要添加冗余.
+
+
+##### 3.4.2.4. 计算平台
+
+
+##### 3.4.2.5. 车联网
+
+网络的风险主要在于空口问题引起的延迟/断网, 因此采用不同网络并存.  
+网络虽然不是自动驾驶所必须的部分, 但是出于监控的需要, 硬件上也有必要使用双冗余.
+
 
 #### 3.4.3. 软件组件
 
 
+
 ### 3.5. 故障率分析
+
 
 ......
 
