@@ -70,7 +70,7 @@ comments: 1
 
 ![](http://blog.iotwrt.com/images/sc.png)
 
-#### 1.2.4. Replication
+#### 1.2.4. Dual Modular Redundancy/Replication
 
 * This is not voting. Uses simpler hardware or software to reconcile outputs.
     * Command / Monitor: command is primary CPU, monitor merely checks output of command.
@@ -236,10 +236,6 @@ safe and secure connected vehicles](https://www.safeware-engineering.org/site/as
 [Designing a software framework for
 automated driving](http://on-demand.gputechconf.com/gtc-eu/2017/presentation/23257-sebastian-ohl-designing-a-software-framework-for-automated-driving.pdf)
 
-
-![](http://blog.iotwrt.com/images/Elektrobit.png)
-
-
 ### 2.3. [Audi A8 zFAS](https://www.audi-technology-portal.de/en/electrics-electronics/driver-assistant-systems/audi-a8-central-driver-assistance-controller-zfas)
 
     zFAS有4个核心元件, 包括Mobileye的EyeQ3, 负责交通信号识别, 行人检测, 碰撞报警, 光线探测和车道线识别.英伟达的K1负责驾驶员状态检测, 360度全景.英特尔（Altera）的Cyclone V负责目标识别融合, 地图融合, 自动泊车, 预刹车, 激光雷达传感器数据处理.英飞凌的Aurix TC297T负责监测系统运行状态, 使整个系统达到ASIL-D的标准, 同时还负责矩阵大灯
@@ -327,22 +323,30 @@ Common Mode Faults -->
 #### 3.2.1. Performance Limitation
 
 下面是我现在可以想像到的Performance Limitation:
+
 <!-- * 传感器 -> 感知/预测 -> 决策 -> 规划 -> 控制 -> 硬件
 * 传感器 -> 感知/预测 -> 防撞决策 -> 控制 -> 硬件
 * 传感器 -> 防撞决策 -> 控制 -> 硬件
 * 监控 -> 控制 -> 硬件 -->
+
+
 * 整体能力的限制, 程序无法处理当前环境(狭窄路况, 恶劣天气)
 * 感知的局限性, 范围内未识别出障碍物
 * 行为决策的不确定性, 做出错误的驾驶决策
-* 链路响应延迟, 障碍物出现在安全距离内(盲区突然出现的行人)
+* 响应延迟, 障碍物出现在安全距离内(突然出现的行人)
 
 
 ### 3.3. 解决方法
+<!-- 
+对于硬件问题, 基本可以增加成本, 通过冗余的机制解决.   
+对于软件问题, 冗余也多半成立.    
+不过有相当部分软件问题是Common Mode Faults, 因此还需要增加Diversity或者使用其他runtime措施.
 
-对于硬件问题, 基本可以通过增加成本, 通过冗余变成Byzantine Faults. 
+总结来说, 就是几个方法: -->
 
-对于软件问题, 同理.    
-不过有相当部分会是Common Mode Faults, 因此还需要增加Diversity或者使用其他runtime措施.
+* 多样
+* 冗余
+* 监控
 
 ### 3.4. 结构
 
@@ -356,15 +360,35 @@ Common Mode Faults -->
 
 ![](http://blog.iotwrt.com/images/system2.svg)
 
-电源上的冗余是底盘平台设计要综合考虑的事情, 所以这里
+这里先理清楚一下我选择双重冗余与三重冗余与多样化冗余的规则.
 
+    dual modular redundancy (DMR) is when components of a system are duplicated, providing redundancy in case one should fail.
+
+* 如果一个模块, 在其出错的时候, 基本都能检测出来(error detection), 那就使用双重冗余.  
+* 如果模块的错误有很大的概率无法被检测, 则使用三重冗余.  
+* 如果不同类型的模块可以信息互补, 则使用多样化冗余.
+
+再增加一个不使用冗余的规则.
+* 出错可以被检测, 同时短期内不会对驾驶造成影响.
+
+##### 3.4.2.1. 电源
+
+电源上的冗余是底盘平台设计要综合考虑的事情, 所以图中就不再画出.  
+假设底盘已经有12v主电源, 12v备用电池的概念, 支撑传感器域和计算域的电源.
+
+对计算平台的部分来说, 其电压容限比较小, 最常见的共因失效就是电源.  
+因此对计算平台ABC来说, 必须板载独立的[电源隔离/PMIC](https://www.maximintegrated.com/content/dam/files/design/technical-documents/white-papers/Balancing-Power-Supply-Requirements-in-ADAS-Applications-cn.pdf), 甚至可以采用不同的设计来增加多样性.
+
+##### 3.4.2.2. 
 
 #### 3.4.3. 软件组件
 
 
-### 3.5. 其他
+### 3.5. 故障率分析
 
-上述都是YY.  
+......
+
+### 3.6. 其他
 
 加入的这些结构会增加成本, 增加复杂度, 影响驾驶效率等等.  
 最终还是要靠合理的论证和测试, 确定如何平衡安全与成本与效率.  
