@@ -376,26 +376,24 @@ Common Mode Faults -->
 这是因为总线有很多成熟的技术方案, 可靠性也比较好, 都会有信息冗余/硬件冗余的支持.  
 
 对无人车来说, 车载以太网是比较好的选择.  
-**PS: 不要用家用路由器/交换机上无人车!**  
-
 现有车载以太网方案里很多都是针对娱乐/ADAS系统设计的, 可能不太合适无人车.  
-针对自动驾驶设计的, 可以看[Time-Triggered Ethernet](https://www.tttech.com/technologies/time-triggered-ethernet/).
+适合自动驾驶设计的, 可以看[Time-Triggered Ethernet](https://www.tttech.com/technologies/time-triggered-ethernet/).
 
 ##### 3.5.2.3. 传感器
 
 imu:  
 imu失效会快速导致无人车定位的误差, 引起重大的安全风险, 所以必须采用硬件冗余.  
-imu可以用confidence决定数据采用哪个, 因此采用双冗余的方式即可.  
-<small>[无人机IMU三冗余](https://www.itread01.com/content/1546191209.html)</small>
+imu可以用confidence决定数据采用, 因此采用双冗余的方式即可.  
+<small>参考: [无人机IMU三冗余](https://www.itread01.com/content/1546191209.html)</small>
 
 雷达/摄像头:  
 障碍物识别相关的传感器以多样化互补为主, 这里的冗余能力主要取决于算法融合的效果.  
 不过除了障碍物识别, 一些边角的感知需求, 比如说红绿灯识别/信号灯识别/车道线识别, 是无法基于雷达的数据获取的, 
-有必要考虑在摄像头部分做硬件冗余.
+则有必要考虑在摄像头部分做硬件冗余.
 
 其他:  
 GPS和时间同步等并不影响短期内的驾驶行为, 出错后车辆可以完成自主停车操作, 因此不做备份.  
-不过如果GPS出错的几率会比较大, 影响到无人车运行效率, 则需要添加冗余.
+如果GPS失效几率会比较大, 影响到无人车运行效率, 则再考虑添加冗余.
 
 
 ##### 3.5.2.4. 计算平台
