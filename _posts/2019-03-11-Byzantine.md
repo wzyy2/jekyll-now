@@ -473,7 +473,7 @@ IMO, 网络是非常不稳定的因素, 任何设计都不能信任网络, 不�
 现阶段, 自动驾驶算法的Performance Limitation有多大, 都应该清楚.  
 特别是高速场景下, false/true逻辑覆盖不到, 完全依赖感知结果, 导致unkown unsafe scenarios巨大.
 ![](http://blog.iotwrt.com/images/sotif.jpg)
-<small>PS: 如果要无人化运营, 请合理规划最高速度, 明确unsafe scenarios范围</small>
+<small>IMO, 如果要无人化运营, 请合理规划最高速度, 明确unsafe scenarios范围</small>
 
 
 针对Performance Limitation, 只能想到:
