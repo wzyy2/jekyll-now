@@ -55,4 +55,4 @@ disqus_proxy:
   shortname: iotwrt
   username: iotwrt
   host: iotwrt.com
-  port: 5509
+  port: 5050
