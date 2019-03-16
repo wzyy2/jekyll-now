@@ -471,9 +471,9 @@ IMO, 网络是非常不稳定的因素, 任何设计都不能信任网络, 不�
 但是熔断防撞/Guardian逻辑本身也只是简化版的算法, 一样有他自己的限制以及限制于传感器.
 
 现阶段, 自动驾驶算法的Performance Limitation有多大, 都应该清楚.  
-特别是高速场景下, false/true逻辑覆盖不到, 完全依赖感知结果, 导致unkown unsafe scenarios巨大.
+特别是高速场景下, false/true逻辑覆盖不到, 只依赖感知结果会导致unkown unsafe scenarios巨大.
 ![](http://blog.iotwrt.com/images/sotif.jpg)
-<small>IMO, 如果要无人化运营, 请合理规划最高速度, 明确unsafe scenarios范围</small>
+<small>IMO, 如果要无人化运营, 请合理规划最高速度, 明确unsafe scenarios</small>
 
 
 针对Performance Limitation, 只能想到:
