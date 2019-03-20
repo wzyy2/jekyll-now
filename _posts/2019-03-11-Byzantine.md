@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 容错设计与无人车
+title: 无人车容错设计探讨
 category: OS
 tag: Autonomous Drive System
 comments: 1
@@ -8,6 +8,13 @@ comments: 1
 
 <small>(YY, 请勿参考)  </small>
 ![](http://blog.iotwrt.com/images/safety.svg)
+
+
+
+
+1.mainboard & component & modulule_contorls
+2.lauchfile & dag
+6.croutine & scheduler
 
 
 
@@ -263,8 +270,9 @@ automated driving](http://on-demand.gputechconf.com/gtc-eu/2017/presentation/232
 
 这里就随意点, 按照如下的思路来:  
 * 列出可能的 Byzantine Faults 和 Common Mode Faults
-* 找合适解决方案
-* 输出系统结构
+* 解决思路
+* 输出结构
+* 具体实现
 
 
 #### 3.1.1. 不同点
@@ -470,8 +478,10 @@ IMO, 网络是非常不稳定的因素, 任何设计都不能信任网络, 不�
 
 熔断防撞, 是设计上避免严重后果的最后防线.  
 在实现逻辑上和计算平台Guardian基本不会有太大区别, 也是基于RSS/安全距离来做.
-只是鉴于备份安全平台的设计原则和计算能力, 数据来源一般都是用2D激光/超声波这种false/true数据, 或者毫米波雷达/MobileEye这种直接输出tracklet数据, 所以效果必然比主系统差. 主要是覆盖万一情况.
-![](http://blog.iotwrt.com/images/sa2.jpeg)
+只是鉴于备份安全平台的设计原则和计算能力, 数据来源一般都是用2D激光/超声波这种false/true数据, 或者毫米波雷达/MobileEye这种直接输出tracklet数据, 所以效果必然比主系统差.   
+主要是覆盖万一情况.  
+
+<!-- ![](http://blog.iotwrt.com/images/sa2.jpeg) -->
 
 
 #### 3.4.4. Performance Limitation
@@ -479,22 +489,50 @@ IMO, 网络是非常不稳定的因素, 任何设计都不能信任网络, 不�
 如上, 一直讲的都是容错,除了熔断防撞/Guardian算是针对Performance Limitation的防线.
 但是熔断防撞/Guardian逻辑本身也只是简化版的算法, 一样有他自己的限制以及限制于传感器.
 
-现阶段, 自动驾驶算法的Performance Limitation有多大, 都应该清楚.  
-特别是高速场景下, false/true逻辑覆盖不到, 只依赖感知结果会导致unkown unsafe scenarios巨大.
-<small>IMO, 如果要无人化运营, 请合理规划最高速度, 明确unsafe scenarios</small>
+自动驾驶算法现阶段的Performance Limitation有多大, 都应该清楚.  
+特别是高速场景下, false/true逻辑覆盖不到, 只依赖感知结果会导致不安全区域巨大.  
+<small>IMO, 如果要无人化运营, 请合理规划最高速度, 明确安全区域</small>
 
-针对Performance Limitation, 只能想到:
+针对Performance Limitation, 目前想到的:
 * 完善交互设计, 依靠安全员的判断
 * 不造成严重后果, 限速/车外气囊等等
 
+### 3.5. 实现
 
-### 3.5. 分析设计
+满篇的YY, 不讲实现也挺无聊的, 所以选几个点, 聊聊如何理想的实现.
+
+#### 3.5.1. 监控
+
+软件组件图中的"监控", "行为监控", "健康监控".
+
+* 通信协议选择分布式的DDS, 没有单点依赖.  
+* 报警处理规则要配置化, 不能hardcode代码(监控涉及多团队, 需方便同步改动)
+
+监控的数据来源:
+* 系统提供无侵入式监控数据, 比如说资源使用率/内核错误......
+* 软件模块的监控通过checkpoint实现-----也就是判断逻辑不由模块上报, 而是监控模块收集数据做逻辑判断.
+* IMO, 毕竟模块开发者KPI不在此, 最后监控报警只会是混乱的, 然后滥用以及无用, hun. <br>  ；) 
+* 添加checkpoint谨慎! 自动驾驶程序是有"实时"需求的. checkpoint最好是确定性延时的无锁实现.
+
+考虑到监控模块也会有失效的情况, 所以要:
+* Watchdog Timers for Recovery
+* 心跳包 for Error Detection
+
+硬件Watchdog: 发生系统/监控软件故障，没有重置Watchdog，Watchdog过期，硬件触发恢复程序.
+![](http://zone.ni.com/images/reference/zhs-XX/help/370715P-0118/loc_eps_wd_fail_flow.gif)
+Watchdog能避免需要现场重启的尴尬.
+
+心跳包: 因为其他节点对某个节点感觉完全来自于监控节点, 所以需要有心跳包的机制, 在监控节点失效之后可以判断该节点为invaild.
+
+
+
+### 3.6. 分析设计
 
 对上述设计基于失效概率/安全等级进行分析    
 省略......
 
 
-### 3.6. 其他
+### 3.7. 其他
 
 加入的这些结构会增加成本, 增加复杂度, 影响驾驶效率等等.  
 最终还是要靠合理的论证和测试, 确定如何平衡安全与成本与效率.  
