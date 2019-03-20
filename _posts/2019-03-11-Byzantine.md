@@ -9,15 +9,6 @@ comments: 1
 <small>(YY, 请勿参考)  </small>
 ![](http://blog.iotwrt.com/images/safety.svg)
 
-
-
-
-1.mainboard & component & modulule_contorls
-2.lauchfile & dag
-6.croutine & scheduler
-
-
-
 ## 1. 背景
 
 最近看了一个ppt, [Fault-Tolerance in Avionics Systems](https://cs.unc.edu/~anderson/teach/comp790/papers/fault_tolerance_avionics.pdf).    
@@ -72,7 +63,6 @@ ppt比较易懂的解释了航空系统中的容错机制, 感觉有些意思.
 * The voter can optionally shutdown and reconfigure bad components.
 * Created and used before Byzantine Generals’ paper, though it solves the same problem.
 * Still widely in use today.
-
 
 ![](http://blog.iotwrt.com/images/sc.png)
 
@@ -500,8 +490,22 @@ IMO, 网络是非常不稳定的因素, 任何设计都不能信任网络, 不�
 ### 3.5. 实现
 
 满篇的YY, 不讲实现也挺无聊的, 所以选几个点, 聊聊如何理想的实现.
+To be Continue.....
 
 #### 3.5.1. 监控
+
+考虑到监控模块有失效的情况, 要:
+* Watchdog Timers for Recovery
+* 心跳包 for Error Detection
+
+硬件Watchdog: 发生系统/监控软件故障，没有重置Watchdog，Watchdog过期，硬件触发恢复程序.
+![](http://zone.ni.com/images/reference/zhs-XX/help/370715P-0118/loc_eps_wd_fail_flow.gif)
+Watchdog能避免需要现场重启的尴尬.
+
+心跳包: 因为其他节点对某个节点的数据完全来自于监控, 所以需要有心跳包的机制, 在监控节点失效之后可以判断该节点为invaild. -->
+
+
+<!-- #### 3.5.1. 监控
 
 软件组件图中的"监控", "行为监控", "健康监控".
 
@@ -522,9 +526,7 @@ IMO, 网络是非常不稳定的因素, 任何设计都不能信任网络, 不�
 ![](http://zone.ni.com/images/reference/zhs-XX/help/370715P-0118/loc_eps_wd_fail_flow.gif)
 Watchdog能避免需要现场重启的尴尬.
 
-心跳包: 因为其他节点对某个节点感觉完全来自于监控节点, 所以需要有心跳包的机制, 在监控节点失效之后可以判断该节点为invaild.
-
-
+心跳包: 因为其他节点对某个节点感觉完全来自于监控节点, 所以需要有心跳包的机制, 在监控节点失效之后可以判断该节点为invaild. -->
 
 ### 3.6. 分析设计
 
